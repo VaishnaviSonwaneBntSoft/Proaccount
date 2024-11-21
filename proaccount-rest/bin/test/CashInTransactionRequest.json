@@ -1,0 +1,11 @@
+{
+"transactionType": "CashIn",
+"transactionValue": 1000,
+"iso4217Currency": "GBP",
+"sourceAccountNumber":74839283293,
+"sourceAccountSrtCde":"PRE",
+"sourceAccIban":"IBAN123456",
+"sourceAccountName":"ExportImport",
+"transactionSource":"ATM",
+"payRef": "REFN688805082158"
+  }

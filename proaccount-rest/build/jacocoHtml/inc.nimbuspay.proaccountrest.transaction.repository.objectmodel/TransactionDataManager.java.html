@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransactionDataManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.transaction.repository.objectmodel</a> &gt; <span class="el_source">TransactionDataManager.java</span></div><h1>TransactionDataManager.java</h1><pre class="source lang-java linenums">    package inc.nimbuspay.proaccountrest.transaction.repository.objectmodel;
+
+    import inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.*;
+    import inc.nimbuspay.proaccountrest.transaction.model.AcquirerToIssuerCardTransactionsEntityModel;
+    import inc.nimbuspay.proaccountrest.transaction.service.TransactionLogService;
+    import java.util.UUID;
+
+    import org.slf4j.Logger;
+    import org.slf4j.LoggerFactory;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Component;
+
+    @Component
+<span class="fc" id="L14">    public class TransactionDataManager {</span>
+<span class="fc" id="L15">        private static final Logger logger = LoggerFactory.getLogger(TransactionDataManager.class);</span>
+
+        @Autowired
+        private AcquirerRepository acquirerRepository;
+
+        @Autowired
+        private IssuerRepository issuerRepository;
+
+        @Autowired
+        private InitiatingPartyRepository initiatingPartyRepository;
+
+        @Autowired
+        private CardRepository cardRepository;
+
+        @Autowired
+        private TransactionRepository transactionRepository;
+
+        @Autowired
+        private TransactionLogService transactionLogService;
+
+        @Autowired
+        private ProcessingResultRepository processingResultRepository;
+
+        public void saveAcquirer(Acquirer acquirer) {
+<span class="fc" id="L39">            acquirerRepository.save(acquirer);</span>
+<span class="fc" id="L40">        }</span>
+
+        public void saveIssuer(Issuer issuer) {
+<span class="fc" id="L43">            issuerRepository.save(issuer);</span>
+<span class="fc" id="L44">        }</span>
+
+        public void saveInitiatingParty(InitiatingParty initiatingParty) {
+<span class="fc" id="L47">            initiatingPartyRepository.save(initiatingParty);</span>
+<span class="fc" id="L48">        }</span>
+
+        public void saveCard(Card card) {
+<span class="fc" id="L51">            cardRepository.save(card);</span>
+<span class="fc" id="L52">        }</span>
+
+        public void saveTransaction(Transaction transaction) {
+<span class="fc" id="L55">            transactionRepository.save(transaction);</span>
+<span class="fc" id="L56">        }</span>
+
+        public void insertFinancialInitiationRequestInTransactionLog(UUID commonUuid,
+                                                                     AcquirerToIssuerCardTransactionsEntityModel entityModel) {
+<span class="fc" id="L60">            transactionLogService.insertFinancialInitiationRequestInTransactionLog(commonUuid, entityModel);</span>
+<span class="fc" id="L61">        }</span>
+
+        public void insertReversalRequestInTransactionLog(UUID commonUuid,
+                                                          AcquirerToIssuerCardTransactionsEntityModel acquirerToIssuerCardTransactionsEntityModel) {
+<span class="fc" id="L65">            transactionLogService.insertReversalRequestInTransactionLog(commonUuid,</span>
+                    acquirerToIssuerCardTransactionsEntityModel);
+<span class="fc" id="L67">        }</span>
+
+        public void saveProcessingResult(ProcessingResult processingResult) {
+            try {
+<span class="fc" id="L71">                processingResultRepository.save(processingResult);</span>
+<span class="fc" id="L72">            } catch (Exception e) {</span>
+<span class="fc" id="L73">                logger.error(&quot;Failed to insert in processing result {} &quot;, e.getMessage());</span>
+<span class="fc" id="L74">            }</span>
+<span class="fc" id="L75">        }</span>
+    }
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

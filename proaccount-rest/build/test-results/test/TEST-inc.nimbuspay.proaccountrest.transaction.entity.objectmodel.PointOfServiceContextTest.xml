@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.PointOfServiceContextTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:17" hostname="VAISHNAVISONAWA" time="0.012">
+  <properties/>
+  <testcase name="testDefaultValues()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.PointOfServiceContextTest" time="0.001"/>
+  <testcase name="testToString()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.PointOfServiceContextTest" time="0.004"/>
+  <testcase name="testSettersAndGetters()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.PointOfServiceContextTest" time="0.001"/>
+  <testcase name="testToStringWithNullValues()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.PointOfServiceContextTest" time="0.001"/>
+  <testcase name="testSerializable()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.PointOfServiceContextTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

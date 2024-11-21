@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.payment.service.serviceimpl</a> &gt; <span class="el_source">PaymentServiceImpl.java</span></div><h1>PaymentServiceImpl.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.payment.service.serviceimpl;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.math.BigDecimal;
+import java.security.SecureRandom;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import inc.nimbuspay.proaccountrest.exceptions.PaymentException;
+import inc.nimbuspay.proaccountrest.management.entity.Account;
+import inc.nimbuspay.proaccountrest.management.repository.AccountRepository;
+import inc.nimbuspay.proaccountrest.payment.constant.enums.Constants;
+import inc.nimbuspay.proaccountrest.payment.constant.enums.PaymentResponseMessage;
+import inc.nimbuspay.proaccountrest.payment.constant.queryconstants.ConsumerTransactionQueryConstants;
+import inc.nimbuspay.proaccountrest.payment.entity.AccountPayableLog;
+import inc.nimbuspay.proaccountrest.payment.entity.AccountReceivableLog;
+import inc.nimbuspay.proaccountrest.payment.entity.Ledger;
+import inc.nimbuspay.proaccountrest.payment.entity.PaymentReference;
+import inc.nimbuspay.proaccountrest.payment.mapper.PaymentMapper;
+import inc.nimbuspay.proaccountrest.payment.repository.AccountPayableLogRepository;
+import inc.nimbuspay.proaccountrest.payment.repository.AccountReceivableLogRepository;
+import inc.nimbuspay.proaccountrest.payment.repository.LedgerRepository;
+import inc.nimbuspay.proaccountrest.payment.repository.PaymentReferenceRepository;
+import inc.nimbuspay.proaccountrest.payment.request.CashInTransactionRequest;
+import inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequest;
+import inc.nimbuspay.proaccountrest.payment.service.PaymentService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
+
+@Service
+// @SuppressWarnings(value = &quot;unchecked&quot;)
+public class PaymentServiceImpl implements PaymentService {
+
+<span class="fc" id="L44">        private static final Logger logger = LoggerFactory.getLogger(PaymentServiceImpl.class);</span>
+
+        private AccountReceivableLogRepository accountReceivableLogRepository;
+
+        private LedgerRepository ledgerRepository;
+
+        private AccountPayableLogRepository accountPayableLogRepository;
+
+        PaymentReferenceRepository paymentReferenceRepository;
+
+        AccountRepository accountRepository;
+
+        public PaymentServiceImpl(AccountReceivableLogRepository accountReceivableLogRepository,
+                        LedgerRepository ledgerRepository, PaymentReferenceRepository paymentReferenceRepository,
+                        EntityManager entityManager,
+<span class="fc" id="L59">                        AccountPayableLogRepository accountPayableLogRepository, AccountRepository accountRepository) {</span>
+<span class="fc" id="L60">                this.accountReceivableLogRepository = accountReceivableLogRepository;</span>
+<span class="fc" id="L61">                this.ledgerRepository = ledgerRepository;</span>
+<span class="fc" id="L62">                this.paymentReferenceRepository = paymentReferenceRepository;</span>
+<span class="fc" id="L63">                this.entityManager = entityManager;</span>
+<span class="fc" id="L64">                this.accountPayableLogRepository = accountPayableLogRepository;</span>
+<span class="fc" id="L65">                this.accountRepository = accountRepository;</span>
+<span class="fc" id="L66">        }</span>
+
+        @PersistenceContext
+        private EntityManager entityManager;
+
+<span class="fc" id="L71">        Random random = new SecureRandom();</span>
+
+        @Transactional(rollbackFor = Exception.class)
+        @Override
+        public void processCashInTransaction(CashInTransactionRequest cashInTransactionRequest) {
+<span class="fc" id="L76">                logger.info(&quot;Cash In transaction is Initiated for {}&quot;, cashInTransactionRequest);</span>
+<span class="fc" id="L77">                String workFlow = &quot;PaymentTransactionServiceImpl.processCashInTransaction&quot;;</span>
+<span class="fc" id="L78">                boolean isPayRefAlreadyExists = isPayRefPresent(cashInTransactionRequest.getPayRef());</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">                if (isPayRefAlreadyExists) {</span>
+<span class="fc" id="L80">                        logger.info(&quot;paymentReference: {} is already present.&quot;,</span>
+<span class="fc" id="L81">                                        cashInTransactionRequest.getPayRef());</span>
+<span class="fc" id="L82">                        throw new PaymentException(PaymentResponseMessage.PAYMENT_REFERENCE_ALREADY_EXIST.getMessage(),</span>
+<span class="fc" id="L83">                                        HttpStatus.NOT_ACCEPTABLE.value(), HttpStatus.NOT_FOUND, workFlow);</span>
+                }
+<span class="fc" id="L85">                Map&lt;String, Account&gt; accounts = fetchAllVirtualAccounts(cashInTransactionRequest.getPayRef());</span>
+<span class="fc" id="L86">                Account consumerAccount = accounts.get(Constants.CONSUMER);</span>
+<span class="fc" id="L87">                Account receivableAccount = accounts.get(Constants.RECEIVABLE);</span>
+<span class="fc" id="L88">                validateCurrency(cashInTransactionRequest.getIso4217Currency(), consumerAccount, workFlow,</span>
+<span class="fc" id="L89">                                cashInTransactionRequest.getPayRef());</span>
+
+                try {
+<span class="fc" id="L92">                        AccountReceivableLog accountReceivableLog = saveAccountReceivableLog(cashInTransactionRequest,</span>
+<span class="fc" id="L93">                                        consumerAccount.getAccountNumber(), workFlow);</span>
+<span class="fc" id="L94">                        incrementLedgerBalance(cashInTransactionRequest.getTransactionValue(),</span>
+<span class="fc" id="L95">                                        receivableAccount.getAccountNumber(), workFlow,</span>
+<span class="fc" id="L96">                                        cashInTransactionRequest.getPayRef());</span>
+<span class="fc" id="L97">                        processCashInInternalFundsMovement(cashInTransactionRequest.getPayRef(),</span>
+<span class="fc" id="L98">                                        cashInTransactionRequest.getTransactionValue(),</span>
+<span class="fc" id="L99">                                        consumerAccount.getAccountNumber(), receivableAccount.getAccountNumber(),</span>
+                                        accountReceivableLog);
+<span class="fc" id="L101">                } catch (PaymentException ex) {</span>
+<span class="fc" id="L102">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L103">                        logger.error(&quot;PaymentException in {} : {}&quot;, workFlow, ex);</span>
+<span class="fc" id="L104">                        throw new PaymentException(PaymentResponseMessage.TRANSACTION_FAIL.getMessage(),</span>
+<span class="fc" id="L105">                                        HttpStatus.NOT_ACCEPTABLE.value(), HttpStatus.NOT_ACCEPTABLE, workFlow,</span>
+                                        msg);
+<span class="fc" id="L107">                } catch (Exception ex) {</span>
+<span class="fc" id="L108">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L109">                        logger.error(&quot;Exception in {} : {}&quot;, workFlow, ex);</span>
+<span class="fc" id="L110">                        throw new PaymentException(msg,</span>
+<span class="fc" id="L111">                                        HttpStatus.NOT_ACCEPTABLE.value(), HttpStatus.NOT_ACCEPTABLE, workFlow);</span>
+<span class="fc" id="L112">                }</span>
+<span class="fc" id="L113">        }</span>
+
+        @Override
+        public void processCashInInternalFundsMovement(String paymentReferenceNumber, Double transactionValue,
+                        Long consumerAccount, Long receivableAccount, AccountReceivableLog accountReceivablesLog) {
+<span class="fc" id="L118">                String workFlow = &quot;paymentServiceImpl.processInternalFundsMovement&quot;;</span>
+                try {
+<span class="fc" id="L120">                        decrementLedgerBalance(transactionValue, receivableAccount, workFlow, paymentReferenceNumber);</span>
+<span class="fc" id="L121">                        incrementLedgerBalance(transactionValue, consumerAccount, workFlow, paymentReferenceNumber);</span>
+<span class="fc" id="L122">                        Ledger ledger = ledgerRepository.save(Ledger.builder()</span>
+<span class="fc" id="L123">                                        .debitAccount(receivableAccount)</span>
+<span class="fc" id="L124">                                        .creditAccount(consumerAccount)</span>
+<span class="fc" id="L125">                                        .transactionType(accountReceivablesLog.getTransactionType())</span>
+<span class="fc" id="L126">                                        .iso4217Currency(accountReceivablesLog.getIso4217Currency())</span>
+<span class="fc" id="L127">                                        .transactionValue(transactionValue)</span>
+<span class="fc" id="L128">                                        .timestamp(LocalDateTime.now())</span>
+<span class="fc" id="L129">                                        .build());</span>
+<span class="fc" id="L130">                        logger.info(&quot;Ledger Database Entry for paymentReference {}:{} &quot;, paymentReferenceNumber,</span>
+                                        ledger);
+<span class="fc" id="L132">                        entityManager.createNativeQuery(</span>
+                                        ConsumerTransactionQueryConstants.REFRESH_AVAILABLE_BALANCE_VIEW)
+<span class="fc" id="L134">                                        .executeUpdate();</span>
+<span class="fc" id="L135">                } catch (PaymentException ex) {</span>
+<span class="fc" id="L136">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L137">                        logger.error(&quot;PaymentException in {} : {}&quot;, workFlow, msg);</span>
+<span class="fc" id="L138">                        throw new PaymentException(PaymentResponseMessage.TRANSACTION_FAIL.getMessage(),</span>
+<span class="fc" id="L139">                                        HttpStatus.NOT_ACCEPTABLE.value(), HttpStatus.NOT_ACCEPTABLE, workFlow,</span>
+                                        msg);
+<span class="fc" id="L141">                } catch (Exception ex) {</span>
+<span class="fc" id="L142">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L143">                        logger.error(&quot;Exception in {} : {}&quot;, workFlow, msg);</span>
+<span class="fc" id="L144">                        throw new PaymentException(ex.getMessage(),</span>
+<span class="fc" id="L145">                                        HttpStatus.NOT_ACCEPTABLE.value(), HttpStatus.NOT_ACCEPTABLE, workFlow,</span>
+                                        &quot;Detailed message: &quot; + msg);
+<span class="fc" id="L147">                }</span>
+
+<span class="fc" id="L149">        }</span>
+
+        @Transactional(rollbackFor = Exception.class)
+        @Override
+        public void processCashOutTransaction(CashOutTransactionRequest request) {
+<span class="fc" id="L154">                String workFlow = &quot;processCashoutTransaction&quot;;</span>
+<span class="fc" id="L155">                logger.info(&quot;TransferOut transaction is initiated for {}&quot;, request);</span>
+                try {
+<span class="fc" id="L157">                        PaymentReference paymentReferences = paymentReferenceRepository.save(PaymentReference.builder()</span>
+<span class="fc" id="L158">                                        .paymentReferenceNumber(generateUniquePaymentReferenceNumber())</span>
+<span class="fc" id="L159">                                        .accountNumber(request.getSourceAccount())</span>
+<span class="fc" id="L160">                                        .timestamp(LocalDateTime.now())</span>
+<span class="fc" id="L161">                                        .build());</span>
+<span class="fc" id="L162">                        logger.info(&quot;PaymentReference : {} is created for TransferOut : {}&quot;,</span>
+<span class="fc" id="L163">                                        paymentReferences.getPaymentReferenceNumber(), request);</span>
+<span class="fc" id="L164">                        Map&lt;String, Account&gt; virtualAccounts = fetchAllVirtualAccounts(</span>
+<span class="fc" id="L165">                                        paymentReferences.getPaymentReferenceNumber());</span>
+<span class="fc" id="L166">                        Account consumerAccount = virtualAccounts.get(Constants.CONSUMER);</span>
+<span class="fc" id="L167">                        Account payableAccount = virtualAccounts.get(Constants.PAYABLE);</span>
+<span class="fc" id="L168">                        Double availableBalance = checkAvailableBalance(request.getSourceAccount());</span>
+<span class="pc bpc" id="L169" title="1 of 4 branches missed.">                        if (availableBalance &lt; 0 || availableBalance &lt; request.getTransactionValue()) {</span>
+<span class="fc" id="L170">                                throw new PaymentException(</span>
+                                                PaymentResponseMessage.ACCOUNT_BALANCE_SHOULD_NOT_LESSER_THAN_DEBIT_AMOUNT
+<span class="fc" id="L172">                                                                .getMessage(),</span>
+<span class="fc" id="L173">                                                HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST, workFlow);</span>
+                        }
+<span class="fc" id="L175">                        decrementLedgerBalance(request.getTransactionValue(), consumerAccount.getAccountNumber(),</span>
+<span class="fc" id="L176">                                        workFlow, paymentReferences.getPaymentReferenceNumber());</span>
+
+<span class="fc" id="L178">                        incrementLedgerBalance(request.getTransactionValue(), payableAccount.getAccountNumber(),</span>
+<span class="fc" id="L179">                                        workFlow, paymentReferences.getPaymentReferenceNumber());</span>
+<span class="fc" id="L180">                        Ledger ledger = ledgerRepository.save(Ledger.builder()</span>
+<span class="fc" id="L181">                                        .debitAccount(consumerAccount.getAccountNumber())</span>
+<span class="fc" id="L182">                                        .creditAccount(payableAccount.getAccountNumber())</span>
+<span class="fc" id="L183">                                        .transactionType(request.getTransactionType())</span>
+<span class="fc" id="L184">                                        .iso4217Currency(request.getIso4217Currency())</span>
+<span class="fc" id="L185">                                        .transactionValue(request.getTransactionValue())</span>
+<span class="fc" id="L186">                                        .timestamp(LocalDateTime.now())</span>
+<span class="fc" id="L187">                                        .build());</span>
+<span class="fc" id="L188">                        logger.info(&quot;Ledger Database Entry for paymentReference {}:{} &quot;,</span>
+<span class="fc" id="L189">                                        paymentReferences.getPaymentReferenceNumber(), ledger);</span>
+<span class="fc" id="L190">                        processTransferFundsToExternalAccount(request, payableAccount.getAccountNumber(),</span>
+<span class="fc" id="L191">                                        paymentReferences.getPaymentReferenceNumber());</span>
+<span class="fc" id="L192">                        entityManager.createNativeQuery(</span>
+                                        ConsumerTransactionQueryConstants.REFRESH_AVAILABLE_BALANCE_VIEW)
+<span class="fc" id="L194">                                        .executeUpdate();</span>
+<span class="fc" id="L195">                } catch (PaymentException ex) {</span>
+<span class="fc" id="L196">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L197">                        logger.info(&quot;Exception in Transaction Out :{}&quot;, msg);</span>
+<span class="fc" id="L198">                        throw new PaymentException(PaymentResponseMessage.TRANSACTION_FAIL.getMessage(),</span>
+<span class="fc" id="L199">                                        HttpStatus.INTERNAL_SERVER_ERROR.value(),</span>
+                                        HttpStatus.INTERNAL_SERVER_ERROR,
+                                        workFlow,
+                                        msg);
+<span class="nc" id="L203">                } catch (Exception ex) {</span>
+<span class="nc" id="L204">                        String msg = ex.getMessage();</span>
+<span class="nc" id="L205">                        logger.error(&quot;Exception in processTransferFundsToExternalAccount:{}&quot;, msg);</span>
+<span class="nc" id="L206">                        throw new PaymentException(msg,</span>
+<span class="nc" id="L207">                                        HttpStatus.INTERNAL_SERVER_ERROR.value(),</span>
+                                        HttpStatus.INTERNAL_SERVER_ERROR,
+                                        workFlow);
+<span class="fc" id="L210">                }</span>
+
+<span class="fc" id="L212">        }</span>
+
+        @Override
+        public void processTransferFundsToExternalAccount(CashOutTransactionRequest cashOutTransactionRequest,
+                        Long payableAccount,
+                        String paymentReferences) {
+<span class="fc" id="L218">                String workFlow = &quot;processTransferFundsToExternalAccount&quot;;</span>
+<span class="fc" id="L219">                decrementLedgerBalance(cashOutTransactionRequest.getTransactionValue(), payableAccount, workFlow,</span>
+                                paymentReferences);
+                try {
+<span class="pc" id="L222">                        AccountPayableLog accountPayableLog = accountPayableLogRepository.save(AccountPayableLog</span>
+<span class="fc" id="L223">                                        .builder()</span>
+<span class="fc" id="L224">                                        .destAccountNumber(cashOutTransactionRequest.getDestAccountNumber())</span>
+<span class="fc" id="L225">                                        .iso4217Currency(cashOutTransactionRequest.getIso4217Currency())</span>
+<span class="fc" id="L226">                                        .payRef(paymentReferences)</span>
+<span class="fc" id="L227">                                        .transactionType(cashOutTransactionRequest.getTransactionType())</span>
+<span class="fc" id="L228">                                        .transactionValue(cashOutTransactionRequest.getTransactionValue())</span>
+<span class="fc" id="L229">                                        .sourceAcc(cashOutTransactionRequest.getSourceAccount())</span>
+<span class="fc" id="L230">                                        .destAccountName(cashOutTransactionRequest.getDestAccountName())</span>
+<span class="fc" id="L231">                                        .timestamp(LocalDateTime.now())</span>
+<span class="fc" id="L232">                                        .transactionSource(cashOutTransactionRequest.getTransactionSource())</span>
+<span class="fc" id="L233">                                        .build());</span>
+<span class="nc" id="L234">                        logger.info(&quot;Data is Saved in AccountPayableLog :{}&quot;, accountPayableLog);</span>
+<span class="fc" id="L235">                } catch (PaymentException ex) {</span>
+<span class="fc" id="L236">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L237">                        logger.error(&quot;{} Exception in processTransferFundsToExternalAccount:{}&quot;, msg,</span>
+                                        cashOutTransactionRequest);
+<span class="fc" id="L239">                        throw new PaymentException(PaymentResponseMessage.FAILED_SAVE_ACC_PAY_LOG.getMessage(),</span>
+<span class="fc" id="L240">                                        HttpStatus.INTERNAL_SERVER_ERROR.value(),</span>
+                                        HttpStatus.INTERNAL_SERVER_ERROR,
+                                        workFlow,
+                                        msg);
+<span class="fc" id="L244">                } catch (Exception ex) {</span>
+<span class="fc" id="L245">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L246">                        logger.error(&quot;{} Exception in processTransferFundsToExternalAccount:{}&quot;, msg,</span>
+                                        cashOutTransactionRequest);
+<span class="fc" id="L248">                        throw new PaymentException(msg,</span>
+<span class="fc" id="L249">                                        HttpStatus.INTERNAL_SERVER_ERROR.value(),</span>
+                                        HttpStatus.INTERNAL_SERVER_ERROR,
+                                        workFlow);
+<span class="nc" id="L252">                }</span>
+<span class="nc" id="L253">        }</span>
+
+        public String generateAndPersistPaymentReferenceNumber(Long virtualAccountNumber) {
+<span class="fc" id="L256">                Account account = accountRepository.findByAccountNumber(virtualAccountNumber);</span>
+<span class="fc bfc" id="L257" title="All 4 branches covered.">                if (account == null || account.isDeleted()) {</span>
+<span class="fc" id="L258">                        logger.info(&quot;Account Not Found for accountNumber:{}&quot;, virtualAccountNumber);</span>
+<span class="fc" id="L259">                        throw new PaymentException(</span>
+<span class="fc" id="L260">                                        PaymentResponseMessage.ACCOUNT_NOT_FOUND.getMessage(virtualAccountNumber),</span>
+<span class="fc" id="L261">                                        HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND,</span>
+                                        &quot;generateAndPersistPaymentReferenceNumber&quot;);
+                }
+<span class="fc" id="L264">                String paymentReference = generateUniquePaymentReferenceNumber();</span>
+<span class="fc" id="L265">                paymentReferenceRepository.save(PaymentReference.builder()</span>
+<span class="fc" id="L266">                                .accountNumber(virtualAccountNumber)</span>
+<span class="fc" id="L267">                                .paymentReferenceNumber(paymentReference)</span>
+<span class="fc" id="L268">                                .timestamp(LocalDateTime.now())</span>
+<span class="fc" id="L269">                                .build());</span>
+<span class="fc" id="L270">                return paymentReference;</span>
+        }
+
+        public AccountReceivableLog saveAccountReceivableLog(CashInTransactionRequest cashInTransactionRequest,
+                        Long accountNumber, String workFlow) {
+                try {
+<span class="fc" id="L276">                        AccountReceivableLog accountReceivablesLog = PaymentMapper.INSTANCE</span>
+<span class="fc" id="L277">                                        .toAccountReceivablesLog(cashInTransactionRequest);</span>
+<span class="fc" id="L278">                        accountReceivablesLog.setDestinationAccount(accountNumber);</span>
+<span class="fc" id="L279">                        accountReceivablesLog.setTimestamp(LocalDateTime.now());</span>
+<span class="fc" id="L280">                        accountReceivablesLog.setPayRef(cashInTransactionRequest.getPayRef());</span>
+<span class="fc" id="L281">                        accountReceivableLogRepository.save(accountReceivablesLog);</span>
+<span class="fc" id="L282">                        logger.info(&quot;Data is Saved in AccountReceivableLog :{}&quot;, accountReceivablesLog);</span>
+<span class="fc" id="L283">                        return accountReceivablesLog;</span>
+<span class="fc" id="L284">                } catch (Exception ex) {</span>
+<span class="fc" id="L285">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L286">                        logger.error(&quot;Exception in saving AccountReceivableLog: {} for Account {}:&quot;, msg,</span>
+                                        accountNumber);
+
+<span class="fc" id="L289">                        throw new PaymentException(PaymentResponseMessage.FAILED_SAVE_ACC_REC_LOG.getMessage(),</span>
+<span class="fc" id="L290">                                        HttpStatus.INTERNAL_SERVER_ERROR.value(),</span>
+                                        HttpStatus.INTERNAL_SERVER_ERROR,
+                                        workFlow,
+                                        msg);
+
+                }
+        }
+
+        public void decrementLedgerBalance(Double transactionValue, Long accountNumber, String workFlow,
+                        String payRef) {
+<span class="fc" id="L300">                logger.info(&quot;request for decrement ledger balance for paymentReference:{} for amount :{}&quot;, payRef,</span>
+                                transactionValue);
+                try {
+<span class="fc" id="L303">                        int result = entityManager</span>
+<span class="fc" id="L304">                                        .createQuery(ConsumerTransactionQueryConstants.DECREMENT_LEDGER_BALANCE)</span>
+<span class="fc" id="L305">                                        .setParameter(Constants.TRANSACTION_VALUE, transactionValue)</span>
+<span class="fc" id="L306">                                        .setParameter(Constants.VIRTUAL_ACCOUNT_NUMBER, accountNumber)</span>
+<span class="fc" id="L307">                                        .executeUpdate();</span>
+<span class="fc bfc" id="L308" title="All 2 branches covered.">                        if (result &gt; 0)</span>
+<span class="fc" id="L309">                                logger.info(&quot;Ledger Balance {} is decremented for account:{} with payment refrence :{} &quot;,</span>
+                                                transactionValue, accountNumber, payRef);
+<span class="fc" id="L311">                } catch (Exception ex) {</span>
+<span class="fc" id="L312">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L313">                        logger.error(&quot;Exception in decrementing ledger balance for account number&quot; + &quot;{}: {} in {}&quot;,</span>
+                                        accountNumber,
+                                        msg, workFlow);
+<span class="fc" id="L316">                        throw new PaymentException(PaymentResponseMessage.TRANSACTION_FAIL.getMessage(),</span>
+<span class="fc" id="L317">                                        HttpStatus.NOT_ACCEPTABLE.value(),</span>
+                                        HttpStatus.NOT_ACCEPTABLE,
+                                        workFlow,
+                                        &quot;Detailed error: &quot; + msg);
+<span class="fc" id="L321">                }</span>
+
+<span class="fc" id="L323">        }</span>
+
+        public void incrementLedgerBalance(Double transactionValue, Long accountNumber, String workFlow,
+                        String payRef) {
+<span class="fc" id="L327">                logger.info(&quot;request for increment ledger balance for paymentReference:{} for amount :{}&quot;, payRef,</span>
+                                transactionValue);
+                try {
+<span class="fc" id="L330">                        int result = entityManager</span>
+<span class="fc" id="L331">                                        .createQuery(ConsumerTransactionQueryConstants.INCREMENT_LEDGER_BALANCE)</span>
+<span class="fc" id="L332">                                        .setParameter(Constants.TRANSACTION_VALUE, transactionValue)</span>
+<span class="fc" id="L333">                                        .setParameter(Constants.VIRTUAL_ACCOUNT_NUMBER, accountNumber)</span>
+<span class="fc" id="L334">                                        .executeUpdate();</span>
+<span class="fc bfc" id="L335" title="All 2 branches covered.">                        if (result &gt; 0)</span>
+<span class="fc" id="L336">                                logger.info(&quot;Ledger Balance {} is incremented for account:{} with payment refrence :{} &quot;,</span>
+                                                transactionValue, accountNumber, payRef);
+<span class="fc" id="L338">                } catch (Exception ex) {</span>
+<span class="fc" id="L339">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L340">                        logger.error(&quot;Exception inincrementing ledger balance for account number {}: {} in {}&quot;,</span>
+                                        accountNumber,
+                                        msg, workFlow);
+<span class="fc" id="L343">                        throw new PaymentException(PaymentResponseMessage.TRANSACTION_FAIL.getMessage(),</span>
+<span class="fc" id="L344">                                        HttpStatus.NOT_ACCEPTABLE.value(),</span>
+                                        HttpStatus.NOT_ACCEPTABLE,
+                                        workFlow,
+                                        msg);
+<span class="fc" id="L348">                }</span>
+<span class="fc" id="L349">        }</span>
+
+        public Map&lt;String, Account&gt; fetchAllVirtualAccounts(String paymentReferenceNumber) {
+<span class="fc" id="L352">                Map&lt;String, Account&gt; virtualAccounts = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L353">                Query consumerQuery = entityManager.createQuery(</span>
+                                ConsumerTransactionQueryConstants.FETCH_ACCOUNT_DETAILS_BY_PAYMENT_REFERENCE);
+<span class="fc" id="L355">                consumerQuery.setParameter(Constants.PAYMENT_REFERENCE_NUMBER, paymentReferenceNumber);</span>
+<span class="fc" id="L356">                List&lt;Account&gt; consumerAccountList = consumerQuery.getResultList();</span>
+<span class="fc bfc" id="L357" title="All 2 branches covered.">                if (consumerAccountList.isEmpty()) {</span>
+<span class="fc" id="L358">                        throw new PaymentException(</span>
+                                        PaymentResponseMessage.ACCOUNT_NOT_FOUND_WITH_PAY_REF_NUMBER
+<span class="fc" id="L360">                                                        .getMessage(paymentReferenceNumber),</span>
+<span class="fc" id="L361">                                        HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND, &quot;&quot;);</span>
+                }
+<span class="fc" id="L363">                Account consumerAccount = consumerAccountList.get(0);</span>
+<span class="fc" id="L364">                virtualAccounts.put(Constants.CONSUMER, consumerAccount);</span>
+                try {
+<span class="fc" id="L366">                        Query accountsQuery = entityManager</span>
+<span class="fc" id="L367">                                        .createQuery(ConsumerTransactionQueryConstants.FETCH_REC_PAY_VIRTUAL_ACCOUNT);</span>
+<span class="fc" id="L368">                        List&lt;Account&gt; accounts = accountsQuery.getResultList();</span>
+<span class="fc" id="L369">                        Map&lt;String, Account&gt; receivablePayableAccounts = accounts.stream()</span>
+<span class="fc" id="L370">                                        .collect(Collectors.toMap(</span>
+<span class="fc" id="L371">                                                        account -&gt; account.getAccountType().toUpperCase(),</span>
+<span class="fc" id="L372">                                                        account -&gt; account,</span>
+<span class="nc" id="L373">                                                        (existing, replacement) -&gt; existing));</span>
+<span class="fc" id="L374">                        virtualAccounts.putAll(receivablePayableAccounts);</span>
+<span class="fc" id="L375">                } catch (Exception ex) {</span>
+<span class="fc" id="L376">                        throw new PaymentException(</span>
+<span class="fc" id="L377">                                        PaymentResponseMessage.FAILED_FETCH_ACCOUNT.getMessage(),</span>
+<span class="fc" id="L378">                                        HttpStatus.NOT_FOUND.value(),</span>
+                                        HttpStatus.NOT_FOUND,
+                                        &quot;fetchAccountsByType&quot;,
+<span class="fc" id="L381">                                        ex.getMessage());</span>
+<span class="fc" id="L382">                }</span>
+<span class="fc" id="L383">                return virtualAccounts;</span>
+        }
+
+        public String generateUniquePaymentReferenceNumber() {
+<span class="fc" id="L387">                StringBuilder referenceNumber = new StringBuilder(&quot;REFN&quot;);</span>
+                do {
+<span class="fc" id="L389">                        referenceNumber.append(random.nextInt(9) + 1);</span>
+<span class="fc bfc" id="L390" title="All 2 branches covered.">                        for (int i = 1; i &lt; 12; i++) {</span>
+<span class="fc" id="L391">                                referenceNumber.append(random.nextInt(10));</span>
+                        }
+<span class="pc bpc" id="L393" title="1 of 2 branches missed.">                } while (referenceNumber.length() &lt; 12);</span>
+<span class="fc" id="L394">                return referenceNumber.toString();</span>
+        }
+
+        private Double checkAvailableBalance(Long accountNumber) {
+                try {
+<span class="fc" id="L399">                        Query query = entityManager</span>
+<span class="fc" id="L400">                                        .createNativeQuery(ConsumerTransactionQueryConstants.CHECK_AVAILABLE_BALANCE)</span>
+<span class="fc" id="L401">                                        .setParameter(Constants.ACCOUNT_NUMBER, accountNumber);</span>
+<span class="fc" id="L402">                        BigDecimal result = (BigDecimal) query.getSingleResult();</span>
+<span class="pc bpc" id="L403" title="1 of 2 branches missed.">                        return result != null ? result.doubleValue() : null;</span>
+<span class="fc" id="L404">                } catch (Exception ex) {</span>
+<span class="fc" id="L405">                        String msg = ex.getMessage();</span>
+<span class="fc" id="L406">                        logger.error(&quot;Failed to check available balance :{}&quot;, msg);</span>
+<span class="fc" id="L407">                        throw new PaymentException(&quot;Failed to check available balance&quot;,</span>
+<span class="fc" id="L408">                                        HttpStatus.INTERNAL_SERVER_ERROR.value(),</span>
+                                        HttpStatus.INTERNAL_SERVER_ERROR,
+                                        &quot;checkAvailableBalance&quot;,
+                                        msg);
+                }
+        }
+
+        public Boolean isPayRefPresent(String payRef) {
+<span class="fc" id="L416">                return accountReceivableLogRepository.existsByPayRef(payRef);</span>
+        }
+
+        public void validateCurrency(String ccy, Account account, String workFLow, String payref) {
+<span class="fc bfc" id="L420" title="All 2 branches covered.">                if (!accountRepository.existsByAccountNumber(account.getAccountNumber())) {</span>
+<span class="fc" id="L421">                        logger.info(&quot;Account Not Found for paymentRreference:{} accountNumber:{}&quot;, payref,</span>
+<span class="fc" id="L422">                                        account.getAccountNumber());</span>
+<span class="fc" id="L423">                        throw new PaymentException(</span>
+<span class="fc" id="L424">                                        PaymentResponseMessage.ACCOUNT_NOT_FOUND.getMessage(account.getAccountNumber()),</span>
+<span class="fc" id="L425">                                        HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND, workFLow);</span>
+                }
+<span class="fc bfc" id="L427" title="All 2 branches covered.">                if (!ccy.equals(account.getIso4217Currency())) {</span>
+<span class="fc" id="L428">                        logger.info(&quot;Invallid Currency for transaction reference:{}&quot;, payref);</span>
+<span class="fc" id="L429">                        throw new PaymentException(PaymentResponseMessage.INVALID_CURRENCY.getMessage(),</span>
+<span class="fc" id="L430">                                        HttpStatus.NOT_ACCEPTABLE.value(), HttpStatus.NOT_ACCEPTABLE, workFLow);</span>
+                }
+<span class="fc bfc" id="L432" title="All 2 branches covered.">                if (account.isDeleted()) {</span>
+<span class="fc" id="L433">                        logger.info(&quot;account is deleted transaction reference:{}&quot;, payref);</span>
+<span class="fc" id="L434">                        throw new PaymentException(</span>
+<span class="fc" id="L435">                                        PaymentResponseMessage.DELETED_ACCOUNT.getMessage(account.getAccountNumber()),</span>
+<span class="fc" id="L436">                                        HttpStatus.NOT_ACCEPTABLE.value(), HttpStatus.NOT_ACCEPTABLE, workFLow);</span>
+                }
+<span class="fc" id="L438">        }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

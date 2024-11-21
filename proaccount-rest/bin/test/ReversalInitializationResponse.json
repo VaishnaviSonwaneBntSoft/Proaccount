@@ -1,0 +1,68 @@
+{
+    "reversalRspn": {
+        "hdr": {
+            "msgFctn": "NOTI",
+            "prtcolVrsn": "1",
+            "xchgId": null,
+            "reTrnsmssnCntr": null,
+            "creDtTm": "2024-06-18T09:08:18.000Z",
+            "btchMgmtInf": null,
+            "initgPty": {
+                "id": "523793",
+                "tp": "OTHN",
+                "othrTp": "othrTp",
+                "assgnr": "ACQR",
+                "ctry": "INR",
+                "shrtNm": null
+            },
+            "rcptPty": null,
+            "tracData": null,
+            "tracblt": null
+        },
+        "body": {
+            "envt": {
+                "acqrr": {
+                    "id": "001727",
+                    "assgnr": "55",
+                    "ctry": null,
+                    "shrtNm": "Akshay",
+                    "lglCorpNm": null,
+                    "addtlId": null,
+                    "lclData": null
+                },
+                "orgtr": null,
+                "sndr": null,
+                "rcvr": null,
+                "accptr": null,
+                "dstn": null,
+                "termnl": null,
+                "issr": null,
+                "card": null,
+                "tkn": null
+            },
+            "cntxt": null,
+            "tx": {
+                "txTp": "0A",
+                "txSubTp": null,
+                "txAttr": null,
+                "othrTxAttr": null,
+                "addtlSvc": null,
+                "spclPrgrmmQlfctn": null,
+                "txId": null,
+                "txAmts": null,
+                "addtlAmt": null,
+                "addtlFee": null,
+                "orgnlAddtlFee": null,
+                "acctFr": null,
+                "acctTo": null,
+                "txDesc": null,
+                "addtlData": null
+            },
+            "prcgRslt": null,
+            "iccRltdData": null,
+            "prtctdData": null,
+            "splmtryData": null
+        },
+        "sctyTrlr": null
+    }
+}

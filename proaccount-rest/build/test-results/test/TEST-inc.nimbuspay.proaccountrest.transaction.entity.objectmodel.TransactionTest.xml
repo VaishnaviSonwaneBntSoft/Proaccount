@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.TransactionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:17" hostname="VAISHNAVISONAWA" time="0.387">
+  <properties/>
+  <testcase name="testTransactionRelationships()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.TransactionTest" time="0.351"/>
+  <testcase name="testTransactionFields()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.TransactionTest" time="0.032"/>
+  <testcase name="testMethod()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.TransactionTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:09" hostname="VAISHNAVISONAWA" time="0.116">
+  <properties/>
+  <testcase name="testNoArgsConstructor()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.001"/>
+  <testcase name="testTransactionValue()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.001"/>
+  <testcase name="testIso4217Currency()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.001"/>
+  <testcase name="testAllArgsConstructor()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.0"/>
+  <testcase name="testTimestamp()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.001"/>
+  <testcase name="testAccountNumber()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.001"/>
+  <testcase name="testValidationSuccess()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.006"/>
+  <testcase name="testDataAnnotation()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.008"/>
+  <testcase name="testEqualsAndHashCode()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.007"/>
+  <testcase name="testPendingId()" classname="inc.nimbuspay.proaccountrest.payment.entity.PendingTransactionTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

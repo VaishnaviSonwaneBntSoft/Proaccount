@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.management.entity.AccountTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:05" hostname="VAISHNAVISONAWA" time="0.123">
+  <properties/>
+  <testcase name="testNotEqualsWithDifferentValues()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.004"/>
+  <testcase name="testToString()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.017"/>
+  <testcase name="testAccountIdSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testSettersAndGetters()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testAccountNumberSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testBuilder()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.004"/>
+  <testcase name="testLedgerBalanceSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testAccountOwnerSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testEqualsWithNullFields()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testDeletedSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testEqualsWithDifferentTypes()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.0"/>
+  <testcase name="testProductSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testAccountTypeSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testEqualsAndHashCode()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testTimestampSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.002"/>
+  <testcase name="testIso4217CurrencySetterAndGetter()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <testcase name="testDefaultConstructor()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.003"/>
+  <testcase name="testEqualsWithNull()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.002"/>
+  <testcase name="testEqualsWithSelf()" classname="inc.nimbuspay.proaccountrest.management.entity.AccountTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

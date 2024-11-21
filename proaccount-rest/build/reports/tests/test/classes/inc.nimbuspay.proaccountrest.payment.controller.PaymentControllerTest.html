@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - PaymentControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>PaymentControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/inc.nimbuspay.proaccountrest.payment.controller.html">inc.nimbuspay.proaccountrest.payment.controller</a> &gt; PaymentControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.138s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testCashInTransaction()</td>
+<td class="success">0.040s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCashOutTransaction()</td>
+<td class="success">0.074s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testPaymentReference()</td>
+<td class="success">0.024s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2024-08-28T16:52:06.752+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [inc.nimbuspay.proaccountrest.payment.controller.PaymentControllerTest]: PaymentControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-28T16:52:06.870+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration inc.nimbuspay.proaccountrest.ProaccountRestApplication for test class inc.nimbuspay.proaccountrest.payment.controller.PaymentControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.4)
+
+2024-08-28T16:52:06.980+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.c.PaymentControllerTest          : Starting PaymentControllerTest using Java 21.0.3 with PID 26732 (started by vaishnavi.sonawane in D:\Proaccount-Rest\ProACCOUNT\proaccount-rest)
+2024-08-28T16:52:06.981+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.c.PaymentControllerTest          : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-08-28T16:52:08.711+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-08-28T16:52:08.712+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-08-28T16:52:08.713+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-08-28T16:52:08.724+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.c.PaymentControllerTest          : Started PaymentControllerTest in 1.824 seconds (process running for 36.706)
+2024-08-28T16:52:08.823+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.controller.PaymentController     : Performing Cashout-Outbound-Transaction  CashOutTransactionRequest(sourceAccount=552855655108, transactionType=Cash Out, transactionValue=500.0, iso4217Currency=GBP, destAccountNumber=222274584747, destAccountSrtCde=null, destAccIban=IBAN123456, destAccountName=Arc Organization, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:08.866+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.controller.PaymentController     : Performing Cashin-TransactionCashInTransactionRequest(transactionType=Cash In, transactionValue=500.0, iso4217Currency=GBP, sourceAccountNumber=null, sourceAccountSrtCde=null, sourceAccIban=null, sourceAccountName=null, transactionSource=null, payRef=REFN503997109848)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.7</a> at 28 Aug 2024, 16:52:25</p>
+</div>
+</div>
+</body>
+</html>

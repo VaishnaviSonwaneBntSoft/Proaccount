@@ -1,0 +1,96 @@
+{
+  "rvslInitn": {
+    "hdr": {
+      "msgFctn": "NOTI",
+      "prtcolVrsn": "1",
+      "xchgId": "25",
+      "reTrnsmssnCntr": "Center",
+      "creDtTm": "2024-06-18T09:08:18.000Z",
+      "btchMgmtInf": {
+        "colltnId": "4",
+        "btchId": "88",
+        "msgSeqNb": "seq"
+      },
+      "initgPty": {
+        "id": "523793",
+        "tp": "OTHN",
+        "othrTp": "othrTp",
+        "assgnr": "ACQR",
+        "ctry": "INR"
+      }
+    },
+    "body": {
+      "cntxt": {
+        "ptOfSvcCntxt": {
+          "cardPres": true,
+          "crdhldrPres": false,
+          "crdhldrActvtd": true,
+          "trnspndrInittd": false,
+          "attnddInd": true,
+          "uattnddLvlCtgy": "CategoryA",
+          "eComrcInd": false,
+          "motoCd": "MOTO",
+          "trnstInd": true,
+          "prtlApprvlSpprtd": false,
+          "delydAuthstnInd": true,
+          "othrSctyChrtcs": "OtherSecurityCharacteristics",
+          "cardDataNtryMd": "UNSP",
+          "qrCdPresntmntMd": "OTHN",
+          "othrQRCdPresntmntMd": "OtherQRMode",
+          "othrCardDataNtryMd": "OtherEntryMode",
+          "storgLctn": "LocationA"
+        }
+      },
+      "envt": {
+        "acqrr": {
+          "id": "001727",
+          "assgnr": "55",
+          "ctry": "GBP",
+          "shrtNm": "Akshay"
+        },
+        "issr": {
+          "id": "008956",
+          "assgnr": "55",
+          "ctry": "INR"
+        },
+        "card": {
+          "pan": "1234567890123456",
+          "prtctdPANInd": true,
+          "cardSeqNb": "001",
+          "fctvDt": "2023-01-01",
+          "xpryDt": "2025-12-31",
+          "svcCd": "123",
+          "pmtAcctRef": "REF123456789",
+          "panAcctRg": "12345678",
+          "cardCtryCd": "840",
+          "cardPdctTp": "CC",
+          "cardPdctSubTp": "CASH",
+          "cardPrtflIdr": "PORTFOLIO123"
+        }
+      },
+      "tx": {
+        "txTp": "0A",
+        "acctFr": {
+          "acctNm": "Akshay",
+          "acctTp": "Session",
+          "acctId": "156"
+        },
+        "acctTo": {
+          "acctNm": "Vishal",
+          "acctTp": "Session",
+          "acctId": "526"
+        },
+        "txId": {
+          "sysTracAudtNb": "2024-06-18T09:08:18.000Z",
+          "rtrvlRefNb": "RetrievalRN"
+        },
+        "txAmts": {
+          "txAmt": {
+            "amt": 25,
+            "ccy": "INR"
+          }
+        }
+      }
+    }
+  }
+}

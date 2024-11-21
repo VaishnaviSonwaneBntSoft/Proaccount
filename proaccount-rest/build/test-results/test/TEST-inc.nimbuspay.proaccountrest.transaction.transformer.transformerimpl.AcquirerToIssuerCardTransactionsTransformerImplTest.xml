@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl.AcquirerToIssuerCardTransactionsTransformerImplTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:23" hostname="VAISHNAVISONAWA" time="0.218">
+  <properties/>
+  <testcase name="testTransformFinancialInitiation()" classname="inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl.AcquirerToIssuerCardTransactionsTransformerImplTest" time="0.183"/>
+  <testcase name="testTransformReversalInitiation()" classname="inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl.AcquirerToIssuerCardTransactionsTransformerImplTest" time="0.003"/>
+  <testcase name="testTransformFinancialResponse()" classname="inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl.AcquirerToIssuerCardTransactionsTransformerImplTest" time="0.027"/>
+  <testcase name="testTransformReversalResponse()" classname="inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl.AcquirerToIssuerCardTransactionsTransformerImplTest" time="0.003"/>
+  <system-out><![CDATA[2024-08-28T16:52:23.186+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] rToIssuerCardTransactionsTransformerImpl : AcquirerToIssuerCardTransactionsModel :AcquirerToIssuerCardTransactionsModel(messageFunction=null, protocolVersion=null, exchangeIdentification=null, reTransmissionCounter=null, creationDateTime=null, initiatingParty=null, environment=null, context=null, transaction=null, originalTransaction=null, processingResult=null, securityTrailer=null)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

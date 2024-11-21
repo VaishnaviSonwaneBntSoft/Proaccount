@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MACData.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.transaction.entity.objectmodel</a> &gt; <span class="el_source">MACData.java</span></div><h1>MACData.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.transaction.entity.objectmodel;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.io.Serializable;
+import java.util.UUID;
+
+import lombok.*;
+
+@Getter
+<span class="fc" id="L13">@Setter</span>
+<span class="fc" id="L14">@ToString</span>
+@Entity
+@Table(name = &quot;mac_data&quot;, schema = &quot;proaccount&quot;)
+<span class="fc" id="L17">public class MACData implements Serializable {</span>
+    @Id
+<span class="fc" id="L19">    private UUID id;</span>
+
+    @Column(name = &quot;control&quot;)
+<span class="fc" id="L22">    private String control;</span>
+
+    @Column(name = &quot;key_set_identifier&quot;)
+<span class="fc" id="L25">    private String keySetIdentifier;</span>
+
+    @Column(name = &quot;derived_information&quot;)
+<span class="fc" id="L28">    private String derivedInformation;</span>
+
+    @Column(name = &quot;algorithm&quot;)
+<span class="fc" id="L31">    private String algorithm;</span>
+
+    @Column(name = &quot;key_length&quot;)
+<span class="fc" id="L34">    private String keyLength;</span>
+
+    @Column(name = &quot;key_protection&quot;)
+<span class="fc" id="L37">    private String keyProtection;</span>
+
+    @Column(name = &quot;key_index&quot;)
+<span class="fc" id="L40">    private String keyIndex;</span>
+
+    @Column(name = &quot;padding_method&quot;)
+<span class="fc" id="L43">    private String paddingMethod;</span>
+
+    @Column(name = &quot;initialisation_vector&quot;)
+<span class="fc" id="L46">    private String initialisationVector;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

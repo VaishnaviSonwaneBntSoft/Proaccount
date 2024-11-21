@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InvoiceSummary2.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.transaction.request.generated.financialinitiationv03</a> &gt; <span class="el_source">InvoiceSummary2.java</span></div><h1>InvoiceSummary2.java</h1><pre class="source lang-java linenums">
+package inc.nimbuspay.proaccountrest.transaction.request.generated.financialinitiationv03;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+<span class="nc bnc" id="L12" title="All 86 branches missed.">@Data</span>
+<span class="nc" id="L13">@AllArgsConstructor</span>
+<span class="nc" id="L14">@NoArgsConstructor</span>
+<span class="nc" id="L15">@Builder</span>
+
+public class InvoiceSummary2 {
+<span class="nc" id="L18">    private String invcNb;</span>
+
+<span class="nc" id="L20">    private PartyIdentification259 sellr;</span>
+
+<span class="nc" id="L22">    private PartyIdentification259 buyr;</span>
+<span class="nc" id="L23">    private String invcDt;</span>
+<span class="nc" id="L24">    private String invcCreDtTm;</span>
+
+<span class="nc" id="L26">    private String summryCmmdtyId;</span>
+
+<span class="nc" id="L28">    private BigDecimal frghtAmt;</span>
+
+<span class="nc" id="L30">    private List&lt;Tax39&gt; taxTtl;</span>
+<span class="nc" id="L31">    private TaxReclaimMethod1Code taxRclmMtd;</span>
+
+<span class="nc" id="L33">    private String addtlData;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

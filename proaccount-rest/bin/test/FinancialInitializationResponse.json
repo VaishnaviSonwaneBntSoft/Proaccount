@@ -1,0 +1,82 @@
+{
+    "finRspn": {
+        "hdr": {
+            "msgFctn": "NOTI",
+            "prtcolVrsn": "1 ",
+            "xchgId": null,
+            "reTrnsmssnCntr": null,
+            "creDtTm": "2024-06-18T09:08:18.000Z",
+            "initgPty": {
+                "id": "123e4567-e89b-12d3-a456-426614174000",
+                "tp": "ACQP",
+                "othrTp": "OTHER_MERCHANT_TYPE",
+                "assgnr": "ACQR",
+                "ctry": "US",
+                "shrtNm": "ShortNameExample"
+            },
+            "rcptPty": null
+        },
+        "body": {
+            "envt": {
+                "acqrr": {
+                    "id": "PID12345",
+                    "assgnr": null,
+                    "ctry": null,
+                    "shrtNm": null,
+                    "lglCorpNm": null,
+                    "addtlId": null,
+                    "lclData": null
+                },
+                "orgtr": null,
+                "sndr": null,
+                "rcvr": null,
+                "dstn": null,
+                "issr": null
+            },
+            "cntxt": {
+                "ptOfSvcCntxt": {
+                    "cardPres": null,
+                    "crdhldrPres": null,
+                    "crdhldrActvtd": null,
+                    "trnspndrInittd": null,
+                    "attnddInd": null,
+                    "uattnddLvlCtgy": null,
+                    "motoCd": null,
+                    "trnstInd": null,
+                    "prtlApprvlSpprtd": null,
+                    "delydAuthstnInd": null,
+                    "sctyChrtcs": null,
+                    "othrSctyChrtcs": null,
+                    "cardDataNtryMd": null,
+                    "othrCardDataNtryMd": null,
+                    "qrCdPresntmntMd": null,
+                    "othrQRCdPresntmntMd": null,
+                    "tempScrCardDataReusd": null,
+                    "storgLctn": null,
+                    "ecomrcInd": null
+                },
+                "txCntxt": null,
+                "vrfctn": null,
+                "rskCntxt": null
+            },
+            "tx": {
+                "txTp": "Purchase",
+                "txSubTp": null,
+                "txAttr": null,
+                "othrTxAttr": null,
+                "msgRsn": null,
+                "altrnMsgRsn": null,
+                "preAuthstnTmLmt": null,
+                "assoctdDataDstn": null,
+                "txId": null,
+                "dsptData": null,
+                "txAmts": null,
+                "txDesc": null,
+                "addtlData": null
+            },
+            "prcgRslt": null,
+            "iccRltdData": null
+        },
+        "sctyTrlr": null
+    }
+}

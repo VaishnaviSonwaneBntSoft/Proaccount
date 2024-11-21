@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - AccountControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>AccountControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/inc.nimbuspay.proaccountrest.management.controller.html">inc.nimbuspay.proaccountrest.management.controller</a> &gt; AccountControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">4</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.636s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">createAccountShouldReturnAccountCreationResponse()</td>
+<td class="success">0.448s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteAccountShouldReturnSuccessMessage()</td>
+<td class="success">0.634s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAccountShouldReturnAccountResponse()</td>
+<td class="success">0.067s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">updateAccountShouldReturnSuccessMessage()</td>
+<td class="success">0.487s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2024-08-28T16:52:01.341+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [inc.nimbuspay.proaccountrest.management.controller.AccountControllerTest]: AccountControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-28T16:52:01.417+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration inc.nimbuspay.proaccountrest.ProaccountRestApplication for test class inc.nimbuspay.proaccountrest.management.controller.AccountControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.4)
+
+2024-08-28T16:52:01.468+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.c.AccountControllerTest          : Starting AccountControllerTest using Java 21.0.3 with PID 26732 (started by vaishnavi.sonawane in D:\Proaccount-Rest\ProACCOUNT\proaccount-rest)
+2024-08-28T16:52:01.469+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.c.AccountControllerTest          : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-08-28T16:52:03.881+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-08-28T16:52:03.882+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-08-28T16:52:03.890+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-08-28T16:52:03.922+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.c.AccountControllerTest          : Started AccountControllerTest in 2.497 seconds (process running for 31.904)
+2024-08-28T16:52:04.311+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account Delete Request received for account number: 633826205358
+2024-08-28T16:52:04.343+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account is Deleted for account number: 633826205358
+2024-08-28T16:52:05.015+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account update Request received for account numbers with account details: 633826205358 AccountRequest(iso4217Currency=null, accountOwner=null, product=null)
+2024-08-28T16:52:05.422+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account Create Request received for: AccountRequest(iso4217Currency=null, accountOwner=null, product=null)
+2024-08-28T16:52:05.424+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account is Created AccountCreationResponse(accountNumber=633826205777, accountType=Consumer)
+2024-08-28T16:52:05.548+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Fetching account information request received for accountNumber: 633826205358
+2024-08-28T16:52:05.549+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Fetched account information for accountNumber: 633826205358
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.7</a> at 28 Aug 2024, 16:52:25</p>
+</div>
+</div>
+</body>
+</html>

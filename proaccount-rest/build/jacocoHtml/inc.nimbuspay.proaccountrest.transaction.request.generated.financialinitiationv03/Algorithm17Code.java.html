@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Algorithm17Code.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.transaction.request.generated.financialinitiationv03</a> &gt; <span class="el_source">Algorithm17Code.java</span></div><h1>Algorithm17Code.java</h1><pre class="source lang-java linenums">
+package inc.nimbuspay.proaccountrest.transaction.request.generated.financialinitiationv03;
+
+<span class="nc" id="L4">public enum Algorithm17Code {</span>
+
+<span class="nc" id="L6">    MACC(&quot;MACC&quot;),</span>
+<span class="nc" id="L7">    MCCS(&quot;MCCS&quot;),</span>
+    
+<span class="nc" id="L9">    CMA_1(&quot;CMA1&quot;),</span>
+    
+<span class="nc" id="L11">    MCC_1(&quot;MCC1&quot;),</span>
+    
+<span class="nc" id="L13">    CMA_9(&quot;CMA9&quot;),</span>
+    
+<span class="nc" id="L15">    CMA_5(&quot;CMA5&quot;),</span>
+    
+<span class="nc" id="L17">    CMA_2(&quot;CMA2&quot;),</span>
+    
+<span class="nc" id="L19">    CM_31(&quot;CM31&quot;),</span>
+    
+<span class="nc" id="L21">    CM_32(&quot;CM32&quot;),</span>
+    
+<span class="nc" id="L23">    CM_33(&quot;CM33&quot;),</span>
+    
+<span class="nc" id="L25">    MCS_3(&quot;MCS3&quot;),</span>
+    
+<span class="nc" id="L27">    CCA_1(&quot;CCA1&quot;),</span>
+    
+<span class="nc" id="L29">    CCA_2(&quot;CCA2&quot;),</span>
+    
+<span class="nc" id="L31">    CCA_3(&quot;CCA3&quot;);</span>
+    private final String value;
+
+<span class="nc" id="L34">    Algorithm17Code(String v) {</span>
+<span class="nc" id="L35">        value = v;</span>
+<span class="nc" id="L36">    }</span>
+
+    public String value() {
+<span class="nc" id="L39">        return value;</span>
+    }
+
+    public static Algorithm17Code fromValue(String v) {
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        for (Algorithm17Code c : Algorithm17Code.values()) {</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">            if (c.value.equals(v)) {</span>
+<span class="nc" id="L45">                return c;</span>
+            }
+        }
+<span class="nc" id="L48">        throw new IllegalArgumentException(v);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

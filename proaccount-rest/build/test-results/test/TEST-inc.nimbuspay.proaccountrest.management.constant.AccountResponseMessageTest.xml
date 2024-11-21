@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.management.constant.AccountResponseMessageTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:01" hostname="VAISHNAVISONAWA" time="0.03">
+  <properties/>
+  <testcase name="testAccountNotFound()" classname="inc.nimbuspay.proaccountrest.management.constant.AccountResponseMessageTest" time="0.007"/>
+  <testcase name="testAccountAlreadyExists()" classname="inc.nimbuspay.proaccountrest.management.constant.AccountResponseMessageTest" time="0.001"/>
+  <testcase name="testFailedToSaveAccount()" classname="inc.nimbuspay.proaccountrest.management.constant.AccountResponseMessageTest" time="0.001"/>
+  <testcase name="testSuccessfullyDeleted()" classname="inc.nimbuspay.proaccountrest.management.constant.AccountResponseMessageTest" time="0.003"/>
+  <testcase name="testAccountAlreadyDeleted()" classname="inc.nimbuspay.proaccountrest.management.constant.AccountResponseMessageTest" time="0.003"/>
+  <testcase name="testAccountBalanceMustBeZero()" classname="inc.nimbuspay.proaccountrest.management.constant.AccountResponseMessageTest" time="0.002"/>
+  <testcase name="testGetMessageWithStringAccountNumber()" classname="inc.nimbuspay.proaccountrest.management.constant.AccountResponseMessageTest" time="0.001"/>
+  <testcase name="testSuccessfullyUpdated()" classname="inc.nimbuspay.proaccountrest.management.constant.AccountResponseMessageTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

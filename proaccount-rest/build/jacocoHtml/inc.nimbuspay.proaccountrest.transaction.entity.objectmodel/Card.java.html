@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.transaction.entity.objectmodel</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.transaction.entity.objectmodel;
+
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.UUID;
+
+import lombok.*;
+
+@Getter
+<span class="fc" id="L12">@Setter</span>
+<span class="fc" id="L13">@ToString</span>
+@Entity
+@Table(name = &quot;card&quot;, schema = &quot;proaccount&quot;)
+<span class="fc" id="L16">public class Card implements Serializable {</span>
+    @Id
+<span class="fc" id="L18">    private UUID id;</span>
+
+    @Column(name = &quot;primary_account_number&quot;, nullable = false)
+<span class="fc" id="L21">    private String primaryAccountNumber;</span>
+
+    @Column(name = &quot;protected_pan_indicator&quot;)
+<span class="fc" id="L24">    private Boolean protectedPANIndicator;</span>
+
+    @Column(name = &quot;card_sequence_number&quot;)
+<span class="fc" id="L27">    private String cardSequenceNumber;</span>
+
+    @Column(name = &quot;payment_account_reference&quot;)
+<span class="fc" id="L30">    private String paymentAccountReference;</span>
+
+    @Column(name = &quot;pan_account_range&quot;)
+<span class="fc" id="L33">    private String panAccountRange;</span>
+
+    @Column(name = &quot;card_portfolio_identifier&quot;)
+<span class="fc" id="L36">    private String cardPortfolioIdentifier;</span>
+
+    @Column(name = &quot;card_country_code&quot;)
+<span class="fc" id="L39">    private String cardCountryCode;</span>
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = &quot;card_id&quot;, referencedColumnName = &quot;id&quot;)
+<span class="fc" id="L43">    private List&lt;AdditionalData&gt; additionalCardData;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

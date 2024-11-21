@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.transaction.model.AcquirerToIssuerCardTransactionsEntityModelTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:17" hostname="VAISHNAVISONAWA" time="0.004">
+  <properties/>
+  <testcase name="testGettersAndSetters()" classname="inc.nimbuspay.proaccountrest.transaction.model.AcquirerToIssuerCardTransactionsEntityModelTest" time="0.002"/>
+  <testcase name="testToString()" classname="inc.nimbuspay.proaccountrest.transaction.model.AcquirerToIssuerCardTransactionsEntityModelTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.payment.mapper</a> &gt; <span class="el_source">PaymentMapper.java</span></div><h1>PaymentMapper.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.payment.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
+import org.mapstruct.factory.Mappers;
+
+import inc.nimbuspay.proaccountrest.payment.entity.AccountPayableLog;
+import inc.nimbuspay.proaccountrest.payment.entity.AccountReceivableLog;
+import inc.nimbuspay.proaccountrest.payment.entity.Ledger;
+import inc.nimbuspay.proaccountrest.payment.request.CashInTransactionRequest;
+import inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequest;
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public interface PaymentMapper {
+<span class="fc" id="L15">    PaymentMapper INSTANCE = Mappers.getMapper(PaymentMapper.class);</span>
+
+    AccountPayableLog toAccountReceivablesLog(CashOutTransactionRequest request);
+
+    AccountReceivableLog toAccountReceivablesLog(CashInTransactionRequest request);
+
+    Ledger toLedger(CashOutTransactionRequest request);
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

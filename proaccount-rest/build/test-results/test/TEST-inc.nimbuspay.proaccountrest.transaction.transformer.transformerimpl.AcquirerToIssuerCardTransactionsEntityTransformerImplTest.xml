@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl.AcquirerToIssuerCardTransactionsEntityTransformerImplTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:22" hostname="VAISHNAVISONAWA" time="0.176">
+  <properties/>
+  <testcase name="transformObjectModelToEntityModel_IllegalArgumentException()" classname="inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl.AcquirerToIssuerCardTransactionsEntityTransformerImplTest" time="0.106"/>
+  <testcase name="transformObjectModelToEntityModel()" classname="inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl.AcquirerToIssuerCardTransactionsEntityTransformerImplTest" time="0.069"/>
+  <system-out><![CDATA[2024-08-28T16:52:22.987+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] uerCardTransactionsEntityTransformerImpl : AcquirerToIssuerCardTransactionsEntityModel :AcquirerToIssuerCardTransactionsEntityModel(acquirer=null, card=null, initiatingParty=null, issuer=null, transaction=null)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

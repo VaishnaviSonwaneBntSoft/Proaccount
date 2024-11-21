@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AcquirerToIssuerCardTransactionsEntityTransformerImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl</a> &gt; <span class="el_source">AcquirerToIssuerCardTransactionsEntityTransformerImpl.java</span></div><h1>AcquirerToIssuerCardTransactionsEntityTransformerImpl.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.transaction.transformer.transformerimpl;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import inc.nimbuspay.commonobjectmodel.model.acquirertoissuercardmessages.AcquirerToIssuerCardTransactionsModel;
+import inc.nimbuspay.proaccountrest.transaction.mapper.AcquirerToIssuerCardTransactionsEntityMapper;
+import inc.nimbuspay.proaccountrest.transaction.model.AcquirerToIssuerCardTransactionsEntityModel;
+import inc.nimbuspay.proaccountrest.transaction.transformer.AcquirerToIssuerCardTransactionsEntityTransformer;
+
+@Service
+<span class="fc" id="L13">public class AcquirerToIssuerCardTransactionsEntityTransformerImpl implements AcquirerToIssuerCardTransactionsEntityTransformer {</span>
+
+<span class="fc" id="L15">    private static final Logger logger =</span>
+<span class="fc" id="L16">            LoggerFactory.getLogger(AcquirerToIssuerCardTransactionsEntityTransformerImpl.class);</span>
+    @Override
+    public AcquirerToIssuerCardTransactionsEntityModel transformObjectModelToEntityModel(AcquirerToIssuerCardTransactionsModel acquirerToIssuerCardTransactionsModel) {
+<span class="fc" id="L19">        AcquirerToIssuerCardTransactionsEntityModel acquirerToIssuerCardTransactionsEntityModel =</span>
+                AcquirerToIssuerCardTransactionsEntityMapper
+                        .INSTANCE
+<span class="fc" id="L22">                        .acquirerToIssuerCardTransactionsModelToAcquirerToIssuerCardTransactionsEntityModel(acquirerToIssuerCardTransactionsModel);</span>
+
+<span class="fc" id="L24">        logger.info(&quot;AcquirerToIssuerCardTransactionsEntityModel :{}&quot;, acquirerToIssuerCardTransactionsEntityModel);</span>
+<span class="fc" id="L25">        return acquirerToIssuerCardTransactionsEntityModel;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

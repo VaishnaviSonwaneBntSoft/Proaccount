@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:17" hostname="VAISHNAVISONAWA" time="1.328">
+  <properties/>
+  <testcase name="saveCard()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="1.133"/>
+  <testcase name="testSaveCardDataAccessException()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.007"/>
+  <testcase name="testSaveInitiatingPartyDataAccessException()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.006"/>
+  <testcase name="saveAcquirer()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.007"/>
+  <testcase name="testSaveProcessingResult()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.022"/>
+  <testcase name="testInsertFinancialInitiationRequestInTransactionLogDataAccessException()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.012"/>
+  <testcase name="saveTransaction()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.006"/>
+  <testcase name="testSaveProcessingResult_exception()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.008"/>
+  <testcase name="testSaveTransactionDataAccessException()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.008"/>
+  <testcase name="saveInitiatingParty()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.005"/>
+  <testcase name="insertReversalRequestInTransactionLog()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.007"/>
+  <testcase name="testSaveIssuerDataAccessException()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.006"/>
+  <testcase name="saveIssuer()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.005"/>
+  <testcase name="testSaveAcquirerDataAccessException()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.006"/>
+  <testcase name="insertFinancialInitiationRequestInTransactionLog()" classname="inc.nimbuspay.proaccountrest.transaction.repository.objectmodel.TransactionDataManagerTest" time="0.023"/>
+  <system-out><![CDATA[2024-08-28T16:52:19.040+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.t.r.o.TransactionDataManager       : Failed to insert in processing result Test exception 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

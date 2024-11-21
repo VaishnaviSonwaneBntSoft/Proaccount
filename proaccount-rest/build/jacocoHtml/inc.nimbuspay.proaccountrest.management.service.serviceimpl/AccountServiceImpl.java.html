@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.management.service.serviceimpl</a> &gt; <span class="el_source">AccountServiceImpl.java</span></div><h1>AccountServiceImpl.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.management.service.serviceimpl;
+
+import java.security.SecureRandom;
+import java.time.LocalDateTime;
+import java.util.Random;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import inc.nimbuspay.proaccountrest.exceptions.AccountException;
+import inc.nimbuspay.proaccountrest.management.constant.enums.AccountResponseMessage;
+import inc.nimbuspay.proaccountrest.management.entity.Account;
+import inc.nimbuspay.proaccountrest.management.mapper.AccountMapper;
+import inc.nimbuspay.proaccountrest.management.repository.AccountRepository;
+import inc.nimbuspay.proaccountrest.management.request.AccountRequest;
+import inc.nimbuspay.proaccountrest.management.response.AccountCreationResponse;
+import inc.nimbuspay.proaccountrest.management.response.AccountResponse;
+import inc.nimbuspay.proaccountrest.management.service.AccountService;
+import inc.nimbuspay.proaccountrest.payment.constant.enums.Constants;
+
+@Service
+public class AccountServiceImpl implements AccountService {
+
+    private AccountRepository accountRepository;
+
+<span class="fc" id="L27">    static Random random = new SecureRandom();</span>
+
+<span class="fc" id="L29">    public AccountServiceImpl(AccountRepository accountRepository) {</span>
+<span class="fc" id="L30">        this.accountRepository = accountRepository;</span>
+
+<span class="fc" id="L32">    }</span>
+
+    @Override
+    public AccountResponse getAccount(Long accountNumber) {
+<span class="fc" id="L36">        String workFlow = &quot;AccountServiceImpl.getAccount&quot;;</span>
+<span class="fc" id="L37">        Account account = accountRepository.findByAccountNumber(accountNumber);</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (account == null) {</span>
+<span class="fc" id="L39">            throw new AccountException(AccountResponseMessage.ACCOUNT_NOT_FOUND.getMessage(accountNumber),</span>
+<span class="fc" id="L40">                    HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND, workFlow);</span>
+        } else
+<span class="fc" id="L42">            return AccountMapper.INSTANCE.accountToAccountResponse(account);</span>
+    }
+
+    @Override
+    @Transactional
+    public void deleteAccount(Long accountNumber) {
+<span class="fc" id="L48">        String workFlow = &quot;AccountServiceImpl.deleteAccount&quot;;</span>
+<span class="fc" id="L49">        Account account = accountRepository.findByAccountNumber(accountNumber);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (account == null) {</span>
+<span class="fc" id="L51">            throw new AccountException(AccountResponseMessage.ACCOUNT_NOT_FOUND.getMessage(accountNumber),</span>
+<span class="fc" id="L52">                    HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND, workFlow);</span>
+        }
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (account.isDeleted()) {</span>
+<span class="fc" id="L55">            throw new AccountException(AccountResponseMessage.ACCOUNT_ALREADY_DELETED.getMessage(accountNumber),</span>
+<span class="fc" id="L56">                    HttpStatus.NOT_ACCEPTABLE.value(), HttpStatus.NOT_ACCEPTABLE, workFlow);</span>
+        }
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (account.getLedgerBalance() &gt; 0) {</span>
+<span class="fc" id="L59">            throw new AccountException(AccountResponseMessage.ACCOUNT_BALANCE_MUST_BE_ZERO.getMessage(),</span>
+<span class="fc" id="L60">                    HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST, workFlow);</span>
+        }
+<span class="fc" id="L62">        accountRepository.softDeleteByAccountNumber(accountNumber);</span>
+
+<span class="fc" id="L64">    }</span>
+
+    @Override
+    public void updateAccount(AccountRequest updatedAccount, Long accountNumber) {
+<span class="fc" id="L68">        AccountResponse existingAccount = getAccount(accountNumber);</span>
+<span class="fc" id="L69">        Account account = AccountMapper.INSTANCE.accountRequestToAccount(updatedAccount);</span>
+<span class="fc" id="L70">        account.setAccountId(existingAccount.getAccountId());</span>
+<span class="fc" id="L71">        account.setAccountNumber(existingAccount.getAccountNumber());</span>
+<span class="fc" id="L72">        account.setDeleted(existingAccount.getDeleted());</span>
+<span class="fc" id="L73">        accountRepository.save(account);</span>
+<span class="fc" id="L74">    }</span>
+
+    @Override
+    public AccountCreationResponse createAccount(AccountRequest accountRequest) {
+<span class="fc" id="L78">        String workFlow = &quot;AccountServiceImpl.createAccount&quot;;</span>
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        if (accountRepository.existsByAccountNumber(generateAccountNumber())) {</span>
+<span class="fc" id="L81">            throw new AccountException(AccountResponseMessage.ACCOUNT_ALREADY_EXISTS.getMessage(),</span>
+<span class="fc" id="L82">                    HttpStatus.CONFLICT.value(), HttpStatus.CONFLICT, workFlow);</span>
+        }
+        try {
+<span class="fc" id="L85">            Account consumerAccount = createVirtualAccounts(accountRequest);</span>
+<span class="fc" id="L86">            return AccountCreationResponse.builder()</span>
+<span class="fc" id="L87">                    .accountNumber(consumerAccount.getAccountNumber())</span>
+<span class="fc" id="L88">                    .accountType(consumerAccount.getAccountType())</span>
+<span class="fc" id="L89">                    .build();</span>
+<span class="fc" id="L90">        } catch (AccountException ex) {</span>
+<span class="fc" id="L91">            throw new AccountException(AccountResponseMessage.FAILED_TO_SAVE_ACCOUNT.getMessage(),</span>
+<span class="fc" id="L92">                    HttpStatus.INTERNAL_SERVER_ERROR.value(), HttpStatus.INTERNAL_SERVER_ERROR, workFlow);</span>
+        }
+    }
+
+    @Override
+    public void createReceivablePayableAccount(String ccy) {
+<span class="fc" id="L98">        accountRepository.save(Account.builder()</span>
+<span class="fc" id="L99">                .accountNumber(generateAccountNumber())</span>
+<span class="fc" id="L100">                .accountType(Constants.RECEIVABLE)</span>
+<span class="fc" id="L101">                .ledgerBalance(Constants.DEFAULT_TRANSACTION_VALUE)</span>
+<span class="fc" id="L102">                .iso4217Currency(ccy)</span>
+<span class="fc" id="L103">                .timestamp(LocalDateTime.now())</span>
+<span class="fc" id="L104">                .build());</span>
+
+<span class="fc" id="L106">        accountRepository.save(Account.builder()</span>
+<span class="fc" id="L107">                .accountNumber(generateAccountNumber())</span>
+<span class="fc" id="L108">                .accountType(Constants.PAYABLE)</span>
+<span class="fc" id="L109">                .ledgerBalance(Constants.DEFAULT_TRANSACTION_VALUE)</span>
+<span class="fc" id="L110">                .iso4217Currency(ccy)</span>
+<span class="fc" id="L111">                .timestamp(LocalDateTime.now())</span>
+<span class="fc" id="L112">                .build());</span>
+<span class="fc" id="L113">    }</span>
+
+    @Override
+    public Account createVirtualAccounts(AccountRequest accountRequest) {
+
+<span class="fc" id="L118">        return accountRepository.save(Account.builder()</span>
+<span class="fc" id="L119">                .accountNumber(generateAccountNumber())</span>
+<span class="fc" id="L120">                .accountType(Constants.CONSUMER)</span>
+<span class="fc" id="L121">                .ledgerBalance(Constants.DEFAULT_TRANSACTION_VALUE)</span>
+<span class="fc" id="L122">                .iso4217Currency(accountRequest.getIso4217Currency())</span>
+<span class="fc" id="L123">                .timestamp(LocalDateTime.now())</span>
+<span class="fc" id="L124">                .accountOwner(accountRequest.getAccountOwner())</span>
+<span class="fc" id="L125">                .product(accountRequest.getProduct())</span>
+<span class="fc" id="L126">                .build());</span>
+
+    }
+
+    public static Long generateAccountNumber() {
+<span class="fc" id="L131">        StringBuilder accountNumber = new StringBuilder();</span>
+        do {
+<span class="fc" id="L133">            accountNumber.append(random.nextInt(9) + 1);</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">            for (int i = 1; i &lt; 12; i++) {</span>
+<span class="fc" id="L135">                accountNumber.append(random.nextInt(10));</span>
+            }
+<span class="pc bpc" id="L137" title="1 of 2 branches missed.">        } while (accountNumber.length() &lt; 12);</span>
+<span class="fc" id="L138">        return Long.parseLong(accountNumber.toString());</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

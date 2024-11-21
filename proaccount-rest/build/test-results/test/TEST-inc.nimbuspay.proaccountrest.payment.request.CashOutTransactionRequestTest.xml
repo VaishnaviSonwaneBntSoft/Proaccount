@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:09" hostname="VAISHNAVISONAWA" time="0.177">
+  <properties/>
+  <testcase name="testCreditAccountDigitsValidation()" classname="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" time="0.007"/>
+  <testcase name="testNoArgsConstructor()" classname="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" time="0.0"/>
+  <testcase name="testSettersAndGetters()" classname="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" time="0.001"/>
+  <testcase name="testBuilder()" classname="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" time="0.001"/>
+  <testcase name="testDebitAccountDigitsValidationInvalid()" classname="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" time="0.008"/>
+  <testcase name="testAllArgsConstructor()" classname="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" time="0.0"/>
+  <testcase name="testCreditAccountDigitsValidationInvalid()" classname="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" time="0.008"/>
+  <testcase name="testDataAnnotation()" classname="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" time="0.0"/>
+  <testcase name="testEqualsAndHashCode()" classname="inc.nimbuspay.proaccountrest.payment.request.CashOutTransactionRequestTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

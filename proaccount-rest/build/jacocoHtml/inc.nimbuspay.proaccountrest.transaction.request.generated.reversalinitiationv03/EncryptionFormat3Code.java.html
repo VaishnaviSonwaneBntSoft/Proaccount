@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EncryptionFormat3Code.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.transaction.request.generated.reversalinitiationv03</a> &gt; <span class="el_source">EncryptionFormat3Code.java</span></div><h1>EncryptionFormat3Code.java</h1><pre class="source lang-java linenums">
+package inc.nimbuspay.proaccountrest.transaction.request.generated.reversalinitiationv03;
+
+<span class="fc" id="L4">public enum EncryptionFormat3Code {</span>
+
+    
+<span class="fc" id="L7">    TR_34(&quot;TR34&quot;),</span>
+    
+<span class="fc" id="L9">    TR_31(&quot;TR31&quot;),</span>
+<span class="fc" id="L10">    CTCE(&quot;CTCE&quot;),</span>
+<span class="fc" id="L11">    CBCE(&quot;CBCE&quot;);</span>
+    private final String value;
+
+<span class="fc" id="L14">    EncryptionFormat3Code(String v) {</span>
+<span class="fc" id="L15">        value = v;</span>
+<span class="fc" id="L16">    }</span>
+
+    public String value() {
+<span class="nc" id="L19">        return value;</span>
+    }
+
+    public static EncryptionFormat3Code fromValue(String v) {
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        for (EncryptionFormat3Code c : EncryptionFormat3Code.values()) {</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">            if (c.value.equals(v)) {</span>
+<span class="nc" id="L25">                return c;</span>
+            }
+        }
+<span class="nc" id="L28">        throw new IllegalArgumentException(v);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

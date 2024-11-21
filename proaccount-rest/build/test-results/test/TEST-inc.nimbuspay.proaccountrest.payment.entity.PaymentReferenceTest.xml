@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:09" hostname="VAISHNAVISONAWA" time="0.031">
+  <properties/>
+  <testcase name="testPaymentReferenceNumberSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.0"/>
+  <testcase name="testNotEqualsWithDifferentValues()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.001"/>
+  <testcase name="testToString()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.003"/>
+  <testcase name="testSettersAndGetters()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.001"/>
+  <testcase name="testAccountNumberSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.001"/>
+  <testcase name="testBuilder()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.001"/>
+  <testcase name="testEqualsWithNullFields()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.0"/>
+  <testcase name="testEqualsWithDifferentTypes()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.001"/>
+  <testcase name="testPaymentReferenceIdSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.001"/>
+  <testcase name="testEqualsAndHashCode()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.003"/>
+  <testcase name="testTimestampSetterAndGetter()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.001"/>
+  <testcase name="testDefaultConstructor()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.001"/>
+  <testcase name="testEqualsWithNull()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.0"/>
+  <testcase name="testEqualsWithSelf()" classname="inc.nimbuspay.proaccountrest.payment.entity.PaymentReferenceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

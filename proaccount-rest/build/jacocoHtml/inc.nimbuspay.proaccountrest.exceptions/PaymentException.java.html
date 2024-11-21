@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentException.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.exceptions</a> &gt; <span class="el_source">PaymentException.java</span></div><h1>PaymentException.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.exceptions;
+
+import org.springframework.http.HttpStatusCode;
+
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+<span class="nc" id="L9">@ToString</span>
+public class PaymentException extends RuntimeException{
+
+<span class="fc" id="L12">    private final String exceptionMessage;</span>
+
+<span class="fc" id="L14">    private final Integer statusCode;</span>
+
+<span class="fc" id="L16">    private final HttpStatusCode status;</span>
+
+<span class="fc" id="L18">    private final String workFlow;</span>
+
+<span class="fc" id="L20">    private  String exception;</span>
+
+    public PaymentException(String message, Integer statusCode, HttpStatusCode status,String workFlow) {
+<span class="fc" id="L23">        super(message);</span>
+<span class="fc" id="L24">        this.exceptionMessage = message;</span>
+<span class="fc" id="L25">        this.statusCode = statusCode;</span>
+<span class="fc" id="L26">        this.status = status;</span>
+<span class="fc" id="L27">        this.workFlow=workFlow;</span>
+<span class="fc" id="L28">    }</span>
+
+    public PaymentException(String message, Integer statusCode, HttpStatusCode status,String workFlow,String exception) {
+<span class="fc" id="L31">        super(message);</span>
+<span class="fc" id="L32">        this.exceptionMessage = message;</span>
+<span class="fc" id="L33">        this.statusCode = statusCode;</span>
+<span class="fc" id="L34">        this.status = status;</span>
+<span class="fc" id="L35">        this.workFlow=workFlow;</span>
+<span class="fc" id="L36">        this.exception=exception;</span>
+<span class="fc" id="L37">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

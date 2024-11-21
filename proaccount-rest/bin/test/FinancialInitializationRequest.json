@@ -1,0 +1,188 @@
+{
+  "finInitn": {
+      "hdr": {
+          "msgFctn": "NOTI ",
+          "prtcolVrsn": "1 ",
+          "creDtTm": "2024-06-18T09:08:18.000Z",
+          "initgPty": {
+              "id": "123e4567-e89b-12d3-a456-426614174000",
+              "tp": "ACQP",
+              "othrTp": "OTHER_MERCHANT_TYPE",
+              "assgnr": "ACQR",
+              "ctry": "US",
+              "shrtNm": "ShortNameExample"
+          }
+      },
+      "body": {
+          "envt": {
+              "acqrr": {
+                  "id": "PID12345",
+                  "assgnr": "Government Agency",
+                  "ctry": "USA",
+                  "shrtNm": "CorpX",
+                  "lglCorpNm": "CorpX Incorporated",
+                  "addtlId": {
+                      "tp": "Tax ID",
+                      "val": "TAX123456789"
+                  },
+                  "lclData": {
+                      "lang": "en",
+                      "shrtNm": "Local CorpX",
+                      "lglCorpNm": "Local CorpX Incorporated",
+                      "addtlData": [
+                          {
+                              "tp": "Local Tax ID",
+                              "val": "LTAX987654321"
+                          },
+                          {
+                              "tp": "Local Registration ID",
+                              "val": "LREG54321"
+                          }
+                      ]
+                  }
+              },
+              "issr": {
+                  "id": "123e4567-e89b-12d3-a456-426614174000",
+                  "assgnr": "VISA",
+                  "ctry": "US",
+                  "shrtNm": "ShortNameExample",
+                  "lglCorpNm": "LegalCorporateNameExample",
+                  "addtlId": {
+                      "tp": "TYPE1",
+                      "val": "VALUE1"
+                  },
+                  "lclData": {
+                      "lang": "EN",
+                      "shrtNm": "LocalShortNameExample",
+                      "lglCorpNm": "LocalLegalCorporateNameExample",
+                      "addtlData": [
+                          {
+                              "tp": "LOCAL_TYPE1",
+                              "val": "LOCAL_VALUE1"
+                          },
+                          {
+                              "tp": "LOCAL_TYPE2",
+                              "val": "LOCAL_VALUE2"
+                          }
+                      ]
+                  }
+              },
+              "card": {
+                  "pan": "1234-5678-9012-3456",
+                  "prtctdPANInd": true,
+                  "cardSeqNb": "001",
+                  "fctvDt": "2023-01-01",
+                  "xpryDt": "2025-12-31",
+                  "svcCd": "101",
+                  "trck1": "B1234567890123456^CARDHOLDER/JOHN^2512101100000000000000",
+                  "trck2": {
+                      "txtVal": "1234567890123456=25121011000000000000",
+                      "hexBinryVal": "31323334353637383930313233343536"
+                  },
+                  "trck3": "12345678901234567890123456789012",
+                  "pmtAcctRef": "PAR1234567890",
+                  "panAcctRg": "123456-789012",
+                  "cardCtryCd": "USA",
+                  "cardPdctTp": "Credit",
+                  "cardPdctSubTp": "Gold",
+                  "cardPrtflIdr": "PortfolioXYZ",
+                  "addtlCardData": [
+                      {
+                          "tp": "PromoCode",
+                          "val": "SAVE20"
+                      },
+                      {
+                          "tp": "LoyaltyPoints",
+                          "val": "100"
+                      }
+                  ]
+              }
+          },
+          "cntxt": {
+              "ptOfSvcCntxt": {
+                  "cardDataNtryMd": "MICR"
+              },
+              "txCntxt": {
+                  "mrchntCtgyCd": "4321"
+              }
+          },
+          "tx": {
+              "txTp": "Purchase",
+              "txSubTp": "Online",
+              "txAttr": "AGGR",
+              "othrTxAttr": "None",
+              "msgRsn": [
+                  "Purchase at Merchant ABC",
+                  "No Fraud Detected"
+              ],
+              "altrnMsgRsn": [
+                  "Standard Transaction",
+                  "Low Risk"
+              ],
+              "preAuthstnTmLmt": "2024-06-30T23:59:59Z",
+              "addtlSvc": [
+                  {
+                      "tp": "LOYT",
+                      "othrTp": "Loyalty Program",
+                      "rslt": "PERF",
+                      "othrRslt": "Successful",
+                      "svcDtl": [
+                          {
+                              "tp": "PromoCode",
+                              "val": "SAVE20"
+                          },
+                          {
+                              "tp": "LoyaltyPoints",
+                              "val": "100"
+                          }
+                      ]
+                  }
+              ],
+              "assoctdDataInd": true,
+              "assoctdDataRef": "Ref12345",
+              "assoctdDataDstn": "DataCenter1",
+              "txId": {
+                  "lclDt": "2024-06-26",
+                  "lclTm": "14:53:00",
+                  "tmZone": "UTC",
+                  "txRef": "TX1234567890",
+                  "trnsmssnDtTm": "2024-06-26T14:53:00Z",
+                  "sysTracAudtNb": "000123",
+                  "rtrvlRefNb": "RRN1234567890",
+                  "lifeCyclTracIdMssng": "No",
+                  "acqrrRefData": "AcquirerData",
+                  "acqrrRefNb": "AcquirerRef123",
+                  "cardIssrRefData": "IssuerData"
+              },
+              "txAmts": {
+                  "amtQlfr": "ACTL",
+                  "txAmt": {
+                      "amt": 150.75,
+                      "ccy": "USD"
+                  }
+              },
+              "acctFr": {
+                  "acctNm": "John Doe",
+                  "acctTp": "Credit",
+                  "acctId": "9876543210"
+              },
+              "acctTo": {
+                  "acctNm": "Merchant ABC",
+                  "acctTp": "Business",
+                  "acctId": "1234567890"
+              },
+              "txDesc": "Purchase of electronics from Merchant ABC",
+              "addtlData": [
+                  {
+                      "tp": "PromoCode",
+                      "val": "SAVE20"
+                  },
+                  {
+                      "tp": "LoyaltyPoints",
+                      "val": "100"
+                  }
+              ]
+          }
+      }
+  }
+}

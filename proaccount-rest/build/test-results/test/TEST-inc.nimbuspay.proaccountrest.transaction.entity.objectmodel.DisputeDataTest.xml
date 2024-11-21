@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:17" hostname="VAISHNAVISONAWA" time="0.012">
+  <properties/>
+  <testcase name="setDisputeStatus()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.0"/>
+  <testcase name="testDefaultValues()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.0"/>
+  <testcase name="testToString()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.003"/>
+  <testcase name="testSettersAndGetters()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.001"/>
+  <testcase name="testToStringWithNullValues()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.001"/>
+  <testcase name="getId()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.0"/>
+  <testcase name="setId()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.0"/>
+  <testcase name="testIdGeneration()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.0"/>
+  <testcase name="getDisputeStatus()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.0"/>
+  <testcase name="testSerializable()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.DisputeDataTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

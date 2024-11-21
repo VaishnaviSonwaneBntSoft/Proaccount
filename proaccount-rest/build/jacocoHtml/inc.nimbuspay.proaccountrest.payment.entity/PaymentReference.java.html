@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentReference.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.payment.entity</a> &gt; <span class="el_source">PaymentReference.java</span></div><h1>PaymentReference.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.payment.entity;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = &quot;payment_reference&quot;, schema = &quot;proaccount&quot;)
+<span class="pc bpc" id="L18" title="8 of 38 branches missed.">@Data</span>
+<span class="fc" id="L19">@NoArgsConstructor</span>
+<span class="fc" id="L20">@AllArgsConstructor</span>
+<span class="pc" id="L21">@Builder</span>
+public class PaymentReference {
+
+    @Id
+    @GeneratedValue
+    @Column(columnDefinition = &quot;UUID&quot;)
+<span class="fc" id="L27">    private UUID paymentReferenceId;</span>
+
+    @Column(nullable = false, unique = true)
+<span class="fc" id="L30">    private String paymentReferenceNumber;</span>
+
+    @Column(nullable = false, unique = true)
+<span class="fc" id="L33">    private Long accountNumber;</span>
+
+    @Column(name = &quot;timestmp&quot;)
+<span class="fc" id="L36">    private LocalDateTime timestamp;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

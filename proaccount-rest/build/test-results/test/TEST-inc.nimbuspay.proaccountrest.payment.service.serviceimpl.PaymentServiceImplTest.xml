@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" tests="30" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:09" hostname="VAISHNAVISONAWA" time="2.673">
+  <properties/>
+  <testcase name="testFetchAllVirtualAccountsReceivablePayableNotFound()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="1.919"/>
+  <testcase name="testGenerateAndPersistPaymentReferenceNumberAccountDeleted()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.022"/>
+  <testcase name="testFetchAllVirtualAccountsSuccess()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.024"/>
+  <testcase name="testValidateCurrencyInvalidCurrency()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.026"/>
+  <testcase name="testProcessCashInTransactionSuccess()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.051"/>
+  <testcase name="testIncrementLedgerBalanceSuccess()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.018"/>
+  <testcase name="testDecrementLedgerBalanceNoUpdate()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.012"/>
+  <testcase name="testSaveAccountReceivableLogException()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.028"/>
+  <testcase name="testSaveAccountReceivableLogSuccess()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.018"/>
+  <testcase name="testProcessCashOutTransactionInsufficientBalance()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.034"/>
+  <testcase name="testProcessCashInInternalFundsMovementException()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.031"/>
+  <testcase name="testGenerateAndPersistPaymentReferenceNumberAccountNotFound()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.012"/>
+  <testcase name="testProcessCashInTransactionExceptionHandling()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.05"/>
+  <testcase name="testDecrementLedgerBalanceException()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.02"/>
+  <testcase name="testProcessCashInTransactionPaymentReferenceAlreadyExists()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.027"/>
+  <testcase name="testProcessCashInInternalFundsMovementSuccess()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.03"/>
+  <testcase name="testProcessCashInInternalFundsMovementExceptionHandling()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.02"/>
+  <testcase name="testIncrementLedgerBalanceNoUpdate()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.012"/>
+  <testcase name="testValidateCurrencyAccountDeleted()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.014"/>
+  <testcase name="testProcessCashOutTransactionCheckAvailableBalanceFailure()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.02"/>
+  <testcase name="testFetchAllVirtualAccountsConsumerAccountNotFound()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.019"/>
+  <testcase name="testProcessTransferFundsToExternalAccountException()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.027"/>
+  <testcase name="testValidateCurrencyAccountNotFound()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.019"/>
+  <testcase name="testGenerateAndPersistPaymentReferenceNumberSuccess()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.011"/>
+  <testcase name="testProcessCashOutTransactionSuccess()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.017"/>
+  <testcase name="testDecrementLedgerBalanceSuccess()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.022"/>
+  <testcase name="testValidateCurrencySuccess()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.011"/>
+  <testcase name="testProcessCashInTransactionExceptionHandlingPaymentException()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.056"/>
+  <testcase name="testProcessCashOutTransactionExceptionHandling()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.017"/>
+  <testcase name="testIncrementLedgerBalanceException()" classname="inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest" time="0.02"/>
+  <system-out><![CDATA[2024-08-28T16:52:11.639+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Account Not Found for accountNumber:123456789
+2024-08-28T16:52:11.694+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Invallid Currency for transaction reference:12345
+2024-08-28T16:52:11.744+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Cash In transaction is Initiated for CashInTransactionRequest(transactionType=CashIn, transactionValue=1000.0, iso4217Currency=GBP, sourceAccountNumber=74839283293, sourceAccountSrtCde=PRE, sourceAccIban=IBAN123456, sourceAccountName=ExportImport, transactionSource=ATM, payRef=REFN688805082158)
+2024-08-28T16:52:11.765+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : request for increment ledger balance for paymentReference:REFN343808461729 for amount :100.0
+2024-08-28T16:52:11.766+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Ledger Balance 100.0 is incremented for account:552855655108 with payment refrence :REFN343808461729 
+2024-08-28T16:52:11.779+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : request for decrement ledger balance for paymentReference:REFN343808461729 for amount :100.0
+2024-08-28T16:52:11.801+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Exception in saving AccountReceivableLog: Failed to save AccountReceivableLog for Account 552855655108:
+2024-08-28T16:52:11.829+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Data is Saved in AccountReceivableLog :AccountReceivableLog(acctRecId=null, timestamp=2024-08-28T16:52:11.829621900, transactionType=CashIn, transactionValue=1000.0, iso4217Currency=GBP, sourceAccountNumber=74839283293, sourceAccountSrtCde=PRE, sourceAccIban=IBAN123456, sourceAccountName=ExportImport, transactionSource=ATM, destinationAccount=552855655108, payRef=REFN688805082158)
+2024-08-28T16:52:11.858+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : TransferOut transaction is initiated for CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:11.859+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : PaymentReference : REFN223344112221 is created for TransferOut : CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:11.860+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Exception in Transaction Out :Insufficient funds
+2024-08-28T16:52:11.897+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Exception in paymentServiceImpl.processInternalFundsMovement : Transaction is failed
+2024-08-28T16:52:11.911+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Account Not Found for accountNumber:123456789
+2024-08-28T16:52:11.930+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Cash In transaction is Initiated for CashInTransactionRequest(transactionType=CashIn, transactionValue=1000.0, iso4217Currency=GBP, sourceAccountNumber=74839283293, sourceAccountSrtCde=PRE, sourceAccIban=IBAN123456, sourceAccountName=ExportImport, transactionSource=ATM, payRef=REFN688805082158)
+2024-08-28T16:52:11.932+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Exception in PaymentTransactionServiceImpl.processCashInTransaction : {}
+
+java.lang.RuntimeException: Simulated saveAccountReceivableLog exception
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImpl.saveAccountReceivableLog(PaymentServiceImpl.java:276) ~[main/:na]
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImpl.processCashInTransaction(PaymentServiceImpl.java:92) ~[main/:na]
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImpl.processCashInTransaction(PaymentServiceImpl.java:76) ~[main/:na]
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest.lambda$testProcessCashInTransactionExceptionHandling$9(PaymentServiceImplTest.java:285) ~[test/:na]
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53) ~[junit-jupiter-api-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35) ~[junit-jupiter-api-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115) ~[junit-jupiter-api-5.10.2.jar:5.10.2]
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest.testProcessCashInTransactionExceptionHandling(PaymentServiceImplTest.java:284) ~[test/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:119) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:94) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:89) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) ~[na:na]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) ~[na:na]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) ~[na:na]
+	at jdk.proxy2/jdk.proxy2.$Proxy5.stop(Unknown Source) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) ~[na:na]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) ~[na:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
+
+2024-08-28T16:52:11.982+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : request for decrement ledger balance for paymentReference:REFN343808461729 for amount :100.0
+2024-08-28T16:52:11.985+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Exception in decrementing ledger balance for account number552855655108: Exception in decrementing ledger balance in TEST_WORKFLOW
+2024-08-28T16:52:12.014+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Cash In transaction is Initiated for CashInTransactionRequest(transactionType=CashIn, transactionValue=1000.0, iso4217Currency=GBP, sourceAccountNumber=74839283293, sourceAccountSrtCde=PRE, sourceAccIban=IBAN123456, sourceAccountName=ExportImport, transactionSource=ATM, payRef=REFN688805082158)
+2024-08-28T16:52:12.015+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : paymentReference: REFN688805082158 is already present.
+2024-08-28T16:52:12.034+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Ledger Database Entry for paymentReference REFN123456789:Ledger(ledgerId=null, transactionType=CASH_IN, transactionValue=100.0, iso4217Currency=USD, debitAccount=908924406016, creditAccount=552855655108, timestamp=null) 
+2024-08-28T16:52:12.065+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : PaymentException in paymentServiceImpl.processInternalFundsMovement : Transaction is failed
+2024-08-28T16:52:12.070+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Exception in paymentServiceImpl.processInternalFundsMovement : Simulated RuntimeException
+2024-08-28T16:52:12.085+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : request for increment ledger balance for paymentReference:REFN343808461729 for amount :100.0
+2024-08-28T16:52:12.099+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : account is deleted transaction reference:REFN343808461729
+2024-08-28T16:52:12.118+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : TransferOut transaction is initiated for CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:12.119+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : PaymentReference : PR123 is created for TransferOut : CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:12.120+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Failed to check available balance :Query failed
+2024-08-28T16:52:12.120+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Exception in Transaction Out :Failed to check available balance
+2024-08-28T16:52:12.167+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Failed to save AccountPayableLog Exception in processTransferFundsToExternalAccount:CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:12.169+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Simulated runtime exception Exception in processTransferFundsToExternalAccount:CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:12.191+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Account Not Found for paymentRreference:REFN343808461729 accountNumber:552855655108
+2024-08-28T16:52:12.221+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : TransferOut transaction is initiated for CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:12.221+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : PaymentReference : PR123 is created for TransferOut : CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:12.222+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Ledger Database Entry for paymentReference PR123:null 
+2024-08-28T16:52:12.244+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : request for decrement ledger balance for paymentReference:REFN343808461729 for amount :100.0
+2024-08-28T16:52:12.245+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Ledger Balance 100.0 is decremented for account:552855655108 with payment refrence :REFN343808461729 
+2024-08-28T16:52:12.293+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Cash In transaction is Initiated for CashInTransactionRequest(transactionType=CashIn, transactionValue=1000.0, iso4217Currency=GBP, sourceAccountNumber=74839283293, sourceAccountSrtCde=PRE, sourceAccIban=IBAN123456, sourceAccountName=ExportImport, transactionSource=ATM, payRef=REFN688805082158)
+2024-08-28T16:52:12.297+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : PaymentException in PaymentTransactionServiceImpl.processCashInTransaction : {}
+
+inc.nimbuspay.proaccountrest.exceptions.PaymentException: Transaction is failed
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImpl.saveAccountReceivableLog(PaymentServiceImpl.java:276) ~[main/:na]
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImpl.processCashInTransaction(PaymentServiceImpl.java:92) ~[main/:na]
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImpl.processCashInTransaction(PaymentServiceImpl.java:76) ~[main/:na]
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest.lambda$testProcessCashInTransactionExceptionHandlingPaymentException$10(PaymentServiceImplTest.java:316) ~[test/:na]
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53) ~[junit-jupiter-api-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35) ~[junit-jupiter-api-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115) ~[junit-jupiter-api-5.10.2.jar:5.10.2]
+	at inc.nimbuspay.proaccountrest.payment.service.serviceimpl.PaymentServiceImplTest.testProcessCashInTransactionExceptionHandlingPaymentException(PaymentServiceImplTest.java:315) ~[test/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:119) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:94) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:89) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) ~[na:na]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) ~[na:na]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) ~[na:na]
+	at jdk.proxy2/jdk.proxy2.$Proxy5.stop(Unknown Source) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) ~[na:na]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) ~[na:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
+
+2024-08-28T16:52:12.330+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : TransferOut transaction is initiated for CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:12.331+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : PaymentReference : PR123 is created for TransferOut : CashOutTransactionRequest(sourceAccount=194019835208, transactionType=CashOut-Outbound, transactionValue=100.0, iso4217Currency=GBP, destAccountNumber=910816824321, destAccountSrtCde=PRE, destAccIban=null, destAccountName=Honda Motors, transactionSource=ATM, payRef=null)
+2024-08-28T16:52:12.332+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Exception in Transaction Out :Insufficient funds
+2024-08-28T16:52:12.352+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : request for increment ledger balance for paymentReference:REFN343808461729 for amount :100.0
+2024-08-28T16:52:12.352+05:30 ERROR 26732 --- [proaccount-rest] [    Test worker] i.n.p.p.s.s.PaymentServiceImpl           : Exception inincrementing ledger balance for account number 552855655108: Exception in incrementing ledger balance in TEST_WORKFLOW
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

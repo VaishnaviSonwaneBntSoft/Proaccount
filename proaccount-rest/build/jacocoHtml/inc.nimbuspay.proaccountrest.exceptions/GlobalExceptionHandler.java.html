@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GlobalExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.exceptions</a> &gt; <span class="el_source">GlobalExceptionHandler.java</span></div><h1>GlobalExceptionHandler.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.exceptions;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
+
+import inc.nimbuspay.proaccountrest.management.response.ErrorResponse;
+
+@RestControllerAdvice
+<span class="fc" id="L18">public class GlobalExceptionHandler {</span>
+    
+<span class="fc" id="L20">    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);</span>
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity&lt;ErrorResponse&gt; handleHttpMessageNotReadableException(HttpMessageNotReadableException ex, WebRequest request) {
+<span class="nc" id="L24">        logger.error(&quot;HttpMessageNotReadableException: {}&quot;, ex.getMessage(), ex);</span>
+<span class="nc" id="L25">        int statusCode = HttpStatus.BAD_REQUEST.value();</span>
+<span class="nc" id="L26">        String errorMessage = &quot;Please ensure the request body contains valid JSON data.&quot;;</span>
+<span class="nc" id="L27">        ErrorResponse errorResponse = new ErrorResponse(statusCode, errorMessage);</span>
+<span class="nc" id="L28">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);</span>
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity&lt;ErrorResponse&gt; handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+<span class="nc" id="L33">        logger.error(&quot;MethodArgumentNotValidException: {}&quot;, ex.getMessage(), ex);</span>
+<span class="nc" id="L34">        List&lt;String&gt; errors = ex.getBindingResult()</span>
+<span class="nc" id="L35">                .getFieldErrors()</span>
+<span class="nc" id="L36">                .stream()</span>
+<span class="nc" id="L37">                .map(error -&gt; error.getField() + &quot;: &quot; + error.getDefaultMessage())</span>
+<span class="nc" id="L38">                .toList();</span>
+<span class="nc" id="L39">        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), errors.toString());</span>
+<span class="nc" id="L40">        return new ResponseEntity&lt;&gt;(errorResponse, HttpStatus.BAD_REQUEST);</span>
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity&lt;ErrorResponse&gt; handleException(Exception ex) {
+<span class="nc" id="L45">        logger.error(&quot;Exception: {}&quot;, ex.getMessage(), ex);</span>
+<span class="nc" id="L46">        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());</span>
+<span class="nc" id="L47">        return new ResponseEntity&lt;&gt;(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);</span>
+    }
+
+    @ExceptionHandler(AccountException.class)
+    public ResponseEntity&lt;ErrorResponse&gt; handleAccountException(AccountException ex) {
+<span class="nc" id="L52">        logger.error(&quot;AccountException in {}: {}&quot;, ex.getWorkFlow(), ex.getMessage(), ex);</span>
+<span class="nc" id="L53">        ErrorResponse errorResponse = new ErrorResponse(ex.getStatusCode(), ex.getMessage(), ex.getStatus());</span>
+<span class="nc" id="L54">        return new ResponseEntity&lt;&gt;(errorResponse, ex.getStatus());</span>
+    }
+
+    @ExceptionHandler(PaymentException.class)
+    public ResponseEntity&lt;ErrorResponse&gt; handlePaymentException(PaymentException ex) {
+<span class="nc" id="L59">        logger.error(&quot;PaymentException in {}: {}&quot;, ex.getWorkFlow(), ex.getException(), ex);</span>
+<span class="nc" id="L60">        ErrorResponse errorResponse = new ErrorResponse(ex.getStatusCode(), ex.getMessage(), ex.getStatus());</span>
+<span class="nc" id="L61">        return new ResponseEntity&lt;&gt;(errorResponse, ex.getStatus());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

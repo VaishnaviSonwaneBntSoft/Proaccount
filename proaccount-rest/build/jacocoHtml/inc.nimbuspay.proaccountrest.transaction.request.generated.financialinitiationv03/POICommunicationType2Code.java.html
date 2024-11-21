@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>POICommunicationType2Code.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.transaction.request.generated.financialinitiationv03</a> &gt; <span class="el_source">POICommunicationType2Code.java</span></div><h1>POICommunicationType2Code.java</h1><pre class="source lang-java linenums">
+package inc.nimbuspay.proaccountrest.transaction.request.generated.financialinitiationv03;
+
+<span class="nc" id="L4">public enum POICommunicationType2Code {</span>
+
+<span class="nc" id="L6">    BLTH(&quot;BLTH&quot;),</span>
+<span class="nc" id="L7">    ETHR(&quot;ETHR&quot;),</span>
+<span class="nc" id="L8">    GPRS(&quot;GPRS&quot;),</span>
+<span class="nc" id="L9">    GSMF(&quot;GSMF&quot;),</span>
+<span class="nc" id="L10">    PSTN(&quot;PSTN&quot;),</span>
+    
+<span class="nc" id="L12">    RS_23(&quot;RS23&quot;),</span>
+<span class="nc" id="L13">    USBD(&quot;USBD&quot;),</span>
+<span class="nc" id="L14">    USBH(&quot;USBH&quot;),</span>
+<span class="nc" id="L15">    WIFI(&quot;WIFI&quot;),</span>
+    
+<span class="nc" id="L17">    WT_2_G(&quot;WT2G&quot;),</span>
+    
+<span class="nc" id="L19">    WT_3_G(&quot;WT3G&quot;),</span>
+    
+<span class="nc" id="L21">    WT_4_G(&quot;WT4G&quot;),</span>
+    
+<span class="nc" id="L23">    WT_5_G(&quot;WT5G&quot;);</span>
+    private final String value;
+
+<span class="nc" id="L26">    POICommunicationType2Code(String v) {</span>
+<span class="nc" id="L27">        value = v;</span>
+<span class="nc" id="L28">    }</span>
+
+    public String value() {
+<span class="nc" id="L31">        return value;</span>
+    }
+
+    public static POICommunicationType2Code fromValue(String v) {
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        for (POICommunicationType2Code c : POICommunicationType2Code.values()) {</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">            if (c.value.equals(v)) {</span>
+<span class="nc" id="L37">                return c;</span>
+            }
+        }
+<span class="nc" id="L40">        throw new IllegalArgumentException(v);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

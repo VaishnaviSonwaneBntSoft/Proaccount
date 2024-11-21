@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CashOutTransactionRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.payment.request</a> &gt; <span class="el_source">CashOutTransactionRequest.java</span></div><h1>CashOutTransactionRequest.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.payment.request;
+
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+<span class="pc bpc" id="L13" title="28 of 86 branches missed.">@Data</span>
+<span class="fc" id="L14">@AllArgsConstructor</span>
+<span class="fc" id="L15">@NoArgsConstructor</span>
+<span class="pc" id="L16">@Builder</span>
+public class CashOutTransactionRequest {
+
+    @NotNull(message = &quot;Debit Account Number can not be null&quot;)
+    @Digits(integer = 12, fraction = 0, message = &quot;Debit Account Number must be exactly 12 digits long&quot;)
+<span class="fc" id="L21">    private Long sourceAccount;</span>
+
+    @NotBlank(message = &quot;TransactionType can not be empty&quot;)
+    @NotNull(message = &quot;TransactionType can not be null&quot;)
+<span class="fc" id="L25">    private String transactionType;</span>
+
+    @Min(value = 1, message = &quot;Amount must be greater than 0&quot;)
+<span class="fc" id="L28">    private Double transactionValue;</span>
+
+    @Pattern(regexp = &quot;^[A-Z]{3}$&quot;, message = &quot;Currency code must be 3 uppercase letters&quot;)
+<span class="fc" id="L31">    private String iso4217Currency;</span>
+
+    @NotNull(message = &quot;credit Account Number can not be null&quot;)
+    @Digits(integer = 12, fraction = 0, message = &quot;Credit Account Number must be exactly 12 digits long&quot;)
+<span class="fc" id="L35">    private Long destAccountNumber;</span>
+
+<span class="fc" id="L37">    private String destAccountSrtCde;</span>
+
+<span class="fc" id="L39">    private String destAccIban;</span>
+
+    @NotNull
+<span class="fc" id="L42">    private String destAccountName;</span>
+
+    @NotNull
+<span class="fc" id="L45">    private String transactionSource;</span>
+
+<span class="fc" id="L47">    private String payRef;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

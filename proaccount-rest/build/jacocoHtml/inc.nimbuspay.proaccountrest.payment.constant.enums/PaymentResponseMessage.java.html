@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentResponseMessage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.payment.constant.enums</a> &gt; <span class="el_source">PaymentResponseMessage.java</span></div><h1>PaymentResponseMessage.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.payment.constant.enums;
+
+<span class="fc" id="L3">public enum PaymentResponseMessage {</span>
+
+<span class="fc" id="L5">    ACCOUNT_NOT_FOUND(&quot;Account with  accountNumber %s is not found.&quot;),</span>
+<span class="fc" id="L6">    FAILED_FETCH_ACCOUNT(&quot;Failed to fetch account by type&quot;),</span>
+<span class="fc" id="L7">    FAILED_SAVE_ACC_REC_LOG(&quot;Failed to save AccountReceivableLog&quot;),</span>
+<span class="fc" id="L8">    FAILED_SAVE_ACC_PAY_LOG(&quot;Failed to save AccountPayableLog&quot;),</span>
+<span class="fc" id="L9">    VIRTUAL_ACCOUNT_NOT_FOUND(&quot;Account not found&quot;),</span>
+<span class="fc" id="L10">    ACCOUNT_NOT_FOUND_WITH_PAY_REF_NUMBER(&quot;Account with  payment Reference %s is not found.&quot;),</span>
+<span class="fc" id="L11">    TRANSACTION_FAIL(&quot;Transaction is failed&quot;),</span>
+<span class="fc" id="L12">    TRANSACTION_SUCCESSFUL(&quot;Transaction processed successfully&quot;),</span>
+<span class="fc" id="L13">    ACCOUNT_BALANCE_MUST_BE_ZERO(&quot;Please clear funds before In-activating Account&quot;),</span>
+<span class="fc" id="L14">    ACCOUNT_BALANCE_SHOULD_NOT_LESSER_THAN_DEBIT_AMOUNT(&quot;Insufficient funds&quot;),</span>
+<span class="fc" id="L15">    ACCOUNT_BALANCE_UNAVAILABLE(&quot;Debtor account has 0 balance&quot;),</span>
+<span class="fc" id="L16">    GENERATED_UNIQUE_PAYMENT_REFERENCE(&quot;PaymentReference : %s&quot;),</span>
+<span class="fc" id="L17">    PAYMENT_REFERENCE_ALREADY_EXIST(&quot;Invalid Payment Reference,Please Genereate New Payment Reference&quot;),</span>
+<span class="fc" id="L18">    PAYMENT_REFERENCE_NOT_FOUND(&quot;Payment Reference not found.&quot;),</span>
+<span class="fc" id="L19">    INVALID_CURRENCY(&quot;Invalid Currency.&quot;),</span>
+<span class="fc" id="L20">    DELETED_ACCOUNT(&quot;%s account is mark deleted&quot;);</span>
+
+    private final String messageFormat;
+
+<span class="fc" id="L24">    PaymentResponseMessage(String messageFormat) {</span>
+<span class="fc" id="L25">        this.messageFormat = messageFormat;</span>
+
+<span class="fc" id="L27">    }</span>
+
+    public String getMessage(Long accountNumber) {
+<span class="fc" id="L30">        return String.format(messageFormat, accountNumber);</span>
+    }
+
+    public String getMessage(String accountNumber) {
+<span class="fc" id="L34">        return String.format(messageFormat, accountNumber);</span>
+    }
+
+    public String getMessage() {
+<span class="fc" id="L38">        return messageFormat;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AcquirerToIssuerCardTransactionMapperForReversal.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proaccount-rest</a> &gt; <a href="index.source.html" class="el_package">inc.nimbuspay.proaccountrest.transaction.mapper</a> &gt; <span class="el_source">AcquirerToIssuerCardTransactionMapperForReversal.java</span></div><h1>AcquirerToIssuerCardTransactionMapperForReversal.java</h1><pre class="source lang-java linenums">package inc.nimbuspay.proaccountrest.transaction.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
+import org.mapstruct.factory.Mappers;
+
+import inc.nimbuspay.commonobjectmodel.context.Context;
+import inc.nimbuspay.commonobjectmodel.environment.Environment;
+import inc.nimbuspay.commonobjectmodel.general.AdditionalData;
+import inc.nimbuspay.commonobjectmodel.general.LocalData;
+import inc.nimbuspay.commonobjectmodel.model.acquirertoissuercardmessages.AcquirerToIssuerCardTransactionsModel;
+import inc.nimbuspay.commonobjectmodel.party.Acquirer;
+import inc.nimbuspay.commonobjectmodel.party.InitiatingParty;
+import inc.nimbuspay.commonobjectmodel.party.Issuer;
+import inc.nimbuspay.commonobjectmodel.transaction.AccountDetails;
+import inc.nimbuspay.commonobjectmodel.transaction.Card;
+import inc.nimbuspay.commonobjectmodel.transaction.Transaction;
+import inc.nimbuspay.commonobjectmodel.transaction.TransactionAmounts;
+import inc.nimbuspay.proaccountrest.transaction.request.ReversalInitiation;
+import inc.nimbuspay.proaccountrest.transaction.request.generated.reversalinitiationv03.*;
+import inc.nimbuspay.proaccountrest.transaction.response.ReversalResponse;
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public interface AcquirerToIssuerCardTransactionMapperForReversal {
+
+<span class="fc" id="L27">    AcquirerToIssuerCardTransactionMapperForReversal INSTANCE = Mappers</span>
+<span class="fc" id="L28">            .getMapper(AcquirerToIssuerCardTransactionMapperForReversal.class);</span>
+
+    @Mapping(target = &quot;identification&quot;, source = &quot;id&quot;)
+    @Mapping(target = &quot;type&quot;, source = &quot;tp&quot;)
+    @Mapping(target = &quot;otherType&quot;, source = &quot;othrTp&quot;)
+    @Mapping(target = &quot;assigner&quot;, source = &quot;assgnr&quot;)
+    @Mapping(target = &quot;country&quot;, source = &quot;ctry&quot;)
+    @Mapping(target = &quot;shortName&quot;, source = &quot;shrtNm&quot;)
+    InitiatingParty mapInitiatingParty(GenericIdentification183 initgPty);
+
+    @Mapping(target = &quot;acquirer&quot;, source = &quot;acqrr&quot;)
+    @Mapping(target = &quot;issuer&quot;, source = &quot;issr&quot;)
+    @Mapping(target = &quot;card&quot;, source = &quot;card&quot;)
+    Environment mapEnvironment(Environment19 envt);
+
+    @Mapping(target = &quot;identification&quot;, source = &quot;id&quot;)
+    @Mapping(target = &quot;assigner&quot;, source = &quot;assgnr&quot;)
+    @Mapping(target = &quot;country&quot;, source = &quot;ctry&quot;)
+    @Mapping(target = &quot;shortName&quot;, source = &quot;shrtNm&quot;)
+    @Mapping(target = &quot;legalCorporateName&quot;, source = &quot;lglCorpNm&quot;)
+    @Mapping(target = &quot;additionalIdentification&quot;, source = &quot;addtlId&quot;)
+    @Mapping(target = &quot;localData&quot;, source = &quot;lclData&quot;)
+    Acquirer mapAcquirer(PartyIdentification263 acqrr);
+
+    @Mapping(target = &quot;identification&quot;, source = &quot;id&quot;)
+    @Mapping(target = &quot;assigner&quot;, source = &quot;assgnr&quot;)
+    @Mapping(target = &quot;country&quot;, source = &quot;ctry&quot;)
+    @Mapping(target = &quot;shortName&quot;, source = &quot;shrtNm&quot;)
+    @Mapping(target = &quot;legalCorporateName&quot;, source = &quot;lglCorpNm&quot;)
+    @Mapping(target = &quot;additionalIdentification&quot;, source = &quot;addtlId&quot;)
+    @Mapping(target = &quot;localData&quot;, source = &quot;lclData&quot;)
+    Issuer mapIssuer(PartyIdentification263 issuer);
+
+    @Mapping(target = &quot;primaryAccountNumber&quot;, source = &quot;pan&quot;)
+    @Mapping(target = &quot;protectedPANIndicator&quot;, source = &quot;prtctdPANInd&quot;)
+    @Mapping(target = &quot;cardSequenceNumber&quot;, source = &quot;cardSeqNb&quot;)
+    @Mapping(target = &quot;paymentAccountReference&quot;, source = &quot;pmtAcctRef&quot;)
+    @Mapping(target = &quot;panAccountRange&quot;, source = &quot;panAcctRg&quot;)
+    @Mapping(target = &quot;cardPortfolioIdentifier&quot;, source = &quot;cardPrtflIdr&quot;)
+    @Mapping(target = &quot;additionalCardData&quot;, source = &quot;addtlCardData&quot;)
+    Card mapCard(CardData10 card);
+
+    @Mapping(target = &quot;pointOfServiceContext.cardDataEntryMode&quot;, source = &quot;ptOfSvcCntxt.cardDataNtryMd&quot;)
+    @Mapping(target = &quot;transactionContext.merchantCategoryCode&quot;, source = &quot;txCntxt.mrchntCtgyCd&quot;)
+    Context mapContext(Context14 cntxt);
+
+    @Mapping(target = &quot;transactionType&quot;, source = &quot;txTp&quot;)
+    @Mapping(target = &quot;transactionSubType&quot;, source = &quot;txSubTp&quot;)
+    @Mapping(target = &quot;transactionAttribute&quot;, source = &quot;txAttr&quot;)
+    @Mapping(target = &quot;otherTransactionAttribute&quot;, source = &quot;othrTxAttr&quot;)
+    @Mapping(target = &quot;messageReason&quot;, source = &quot;msgRsn&quot;)
+    @Mapping(target = &quot;alternateMessageReason&quot;, source = &quot;altrnMsgRsn&quot;)
+    @Mapping(target = &quot;preAuthorisationTimeLimit&quot;, source = &quot;preAuthstnTmLmt&quot;)
+    @Mapping(target = &quot;associatedDataIndicator&quot;, source = &quot;assoctdDataInd&quot;)
+    @Mapping(target = &quot;associatedDataReference&quot;, source = &quot;assoctdDataRef&quot;)
+    @Mapping(target = &quot;associatedDataDestination&quot;, source = &quot;assoctdDataDstn&quot;)
+    @Mapping(target = &quot;acctFrom&quot;, source = &quot;acctFr&quot;)
+    @Mapping(target = &quot;acctTo&quot;, source = &quot;acctTo&quot;)
+    @Mapping(target = &quot;transactionIdentification&quot;, source = &quot;txId&quot;)
+    @Mapping(target = &quot;transactionAmounts&quot;, source = &quot;txAmts&quot;)
+    @Mapping(target = &quot;transactionDescription&quot;, source = &quot;txDesc&quot;)
+    @Mapping(target = &quot;additionalData&quot;, source = &quot;addtlData&quot;)
+    Transaction mapTransaction(Transaction142 tx);
+
+    @Mapping(target = &quot;type&quot;, source = &quot;tp&quot;)
+    @Mapping(target = &quot;value&quot;, source = &quot;val&quot;)
+    AdditionalData mapAdditionalData(AdditionalData1 additionalData1);
+
+    @Mapping(target = &quot;transactionAmount&quot;, source = &quot;txAmt.amt&quot;)
+    @Mapping(target = &quot;transactionCurrency&quot;, source = &quot;txAmt.ccy&quot;)
+    TransactionAmounts mapTransactionAmounts(TransactionAmounts2 transactionAmounts);
+
+    @Mapping(target = &quot;language&quot;, source = &quot;lang&quot;)
+    @Mapping(target = &quot;shortName&quot;, source = &quot;shrtNm&quot;)
+    @Mapping(target = &quot;legalCorporateName&quot;, source = &quot;lglCorpNm&quot;)
+    @Mapping(target = &quot;additionalData&quot;, source = &quot;addtlData&quot;)
+    LocalData mapLocalData(LocalData1 lclData);
+
+
+
+    @Mapping(target = &quot;accountName&quot;, source = &quot;acctNm&quot;)
+    @Mapping(target = &quot;accountType&quot;, source = &quot;acctTp&quot;)
+    @Mapping(target = &quot;accountId&quot;, source = &quot;acctId&quot;)
+    AccountDetails mapAccountDetails(AccountDetails3 accountDetails3);
+
+    @Mapping(target = &quot;messageFunction&quot;, source = &quot;rvslInitn.hdr.msgFctn&quot;)
+    @Mapping(target = &quot;protocolVersion&quot;, source = &quot;rvslInitn.hdr.prtcolVrsn&quot;)
+    @Mapping(target = &quot;creationDateTime&quot;, source = &quot;rvslInitn.hdr.creDtTm&quot;)
+    @Mapping(target = &quot;initiatingParty&quot;, source = &quot;rvslInitn.hdr.initgPty&quot;)
+    @Mapping(target = &quot;environment&quot;, source = &quot;rvslInitn.body.envt&quot;)
+    @Mapping(target = &quot;context&quot;, source = &quot;rvslInitn.body.cntxt&quot;)
+    @Mapping(target = &quot;transaction&quot;, source = &quot;rvslInitn.body.tx&quot;)
+    AcquirerToIssuerCardTransactionsModel reversalInitiationToAcquirerToIssuerCardTransactionsModel(
+            ReversalInitiation riversalInitiation);
+          
+    @Mapping(source = &quot;messageFunction&quot;, target = &quot;reversalRspn.hdr.msgFctn&quot;)
+    @Mapping(source = &quot;protocolVersion&quot;, target = &quot;reversalRspn.hdr.prtcolVrsn&quot;)
+    @Mapping(source = &quot;exchangeIdentification&quot;, target = &quot;reversalRspn.hdr.xchgId&quot;)
+    @Mapping(source = &quot;reTransmissionCounter&quot;, target = &quot;reversalRspn.hdr.reTrnsmssnCntr&quot;)
+    @Mapping(source = &quot;creationDateTime&quot;, target = &quot;reversalRspn.hdr.creDtTm&quot;)
+    @Mapping(source = &quot;initiatingParty.identification&quot;, target = &quot;reversalRspn.hdr.initgPty.id&quot;)
+    @Mapping(source = &quot;initiatingParty.type&quot;, target = &quot;reversalRspn.hdr.initgPty.tp&quot;)
+    @Mapping(source = &quot;initiatingParty.otherType&quot;, target = &quot;reversalRspn.hdr.initgPty.othrTp&quot;)
+    @Mapping(source = &quot;initiatingParty.assigner&quot;, target = &quot;reversalRspn.hdr.initgPty.assgnr&quot;)
+    @Mapping(source = &quot;initiatingParty.country&quot;, target = &quot;reversalRspn.hdr.initgPty.ctry&quot;)
+    @Mapping(source = &quot;initiatingParty.shortName&quot;, target = &quot;reversalRspn.hdr.initgPty.shrtNm&quot;)
+    @Mapping(source = &quot;environment.acquirer.identification&quot;, target = &quot;reversalRspn.body.envt.acqrr.id&quot;)
+    @Mapping(source = &quot;environment.acquirer.assigner&quot;, target = &quot;reversalRspn.body.envt.acqrr.assgnr&quot;)
+    @Mapping(source = &quot;environment.acquirer.shortName&quot;, target = &quot;reversalRspn.body.envt.acqrr.shrtNm&quot;)
+    @Mapping(source = &quot;transaction.transactionType&quot;, target = &quot;reversalRspn.body.tx.txTp&quot;)
+    ReversalResponse acquirerToIssuerCardTransactionsModelToReversalResponse(
+            AcquirerToIssuerCardTransactionsModel acquirerToIssuerCardTransactionsModel);
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

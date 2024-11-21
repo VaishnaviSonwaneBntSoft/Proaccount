@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.management.controller.AccountControllerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:03" hostname="VAISHNAVISONAWA" time="1.648">
+  <properties/>
+  <testcase name="deleteAccountShouldReturnSuccessMessage()" classname="inc.nimbuspay.proaccountrest.management.controller.AccountControllerTest" time="0.634"/>
+  <testcase name="updateAccountShouldReturnSuccessMessage()" classname="inc.nimbuspay.proaccountrest.management.controller.AccountControllerTest" time="0.487"/>
+  <testcase name="createAccountShouldReturnAccountCreationResponse()" classname="inc.nimbuspay.proaccountrest.management.controller.AccountControllerTest" time="0.448"/>
+  <testcase name="getAccountShouldReturnAccountResponse()" classname="inc.nimbuspay.proaccountrest.management.controller.AccountControllerTest" time="0.067"/>
+  <system-out><![CDATA[2024-08-28T16:52:01.341+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [inc.nimbuspay.proaccountrest.management.controller.AccountControllerTest]: AccountControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-28T16:52:01.417+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration inc.nimbuspay.proaccountrest.ProaccountRestApplication for test class inc.nimbuspay.proaccountrest.management.controller.AccountControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.4)
+
+2024-08-28T16:52:01.468+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.c.AccountControllerTest          : Starting AccountControllerTest using Java 21.0.3 with PID 26732 (started by vaishnavi.sonawane in D:\Proaccount-Rest\ProACCOUNT\proaccount-rest)
+2024-08-28T16:52:01.469+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.c.AccountControllerTest          : No active profile set, falling back to 1 default profile: "default"
+2024-08-28T16:52:03.881+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-08-28T16:52:03.882+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-08-28T16:52:03.890+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-08-28T16:52:03.922+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.c.AccountControllerTest          : Started AccountControllerTest in 2.497 seconds (process running for 31.904)
+2024-08-28T16:52:04.311+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account Delete Request received for account number: 633826205358
+2024-08-28T16:52:04.343+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account is Deleted for account number: 633826205358
+2024-08-28T16:52:05.015+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account update Request received for account numbers with account details: 633826205358 AccountRequest(iso4217Currency=null, accountOwner=null, product=null)
+2024-08-28T16:52:05.422+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account Create Request received for: AccountRequest(iso4217Currency=null, accountOwner=null, product=null)
+2024-08-28T16:52:05.424+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Account is Created AccountCreationResponse(accountNumber=633826205777, accountType=Consumer)
+2024-08-28T16:52:05.548+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Fetching account information request received for accountNumber: 633826205358
+2024-08-28T16:52:05.549+05:30  INFO 26732 --- [proaccount-rest] [    Test worker] i.n.p.m.controller.AccountController     : Fetched account information for accountNumber: 633826205358
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

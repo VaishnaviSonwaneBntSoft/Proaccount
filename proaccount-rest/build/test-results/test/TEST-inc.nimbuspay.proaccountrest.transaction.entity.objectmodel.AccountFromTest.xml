@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2024-08-28T11:22:17" hostname="VAISHNAVISONAWA" time="0.022">
+  <properties/>
+  <testcase name="getAccountId()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.002"/>
+  <testcase name="setAccountName()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.001"/>
+  <testcase name="setAccountType()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.001"/>
+  <testcase name="testDefaultValues()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.001"/>
+  <testcase name="testToString()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.001"/>
+  <testcase name="setAccountId()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.001"/>
+  <testcase name="getId()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.002"/>
+  <testcase name="setId()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.001"/>
+  <testcase name="getAccountName()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.001"/>
+  <testcase name="getAccountType()" classname="inc.nimbuspay.proaccountrest.transaction.entity.objectmodel.AccountFromTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
